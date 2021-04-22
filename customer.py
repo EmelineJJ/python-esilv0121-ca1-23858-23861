@@ -7,7 +7,5 @@ class Customer:
         self.email=email
         self.pin=pin
 
-    def __str__():
-        return "first:" +first+ "lastname"+ lastname+ "email"+ email+ "pin"+pin
-
+    
     
