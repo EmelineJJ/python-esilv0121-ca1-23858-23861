@@ -1,8 +1,13 @@
 # Emeline JJ - 23858
 # Francoise RUCH - 23861
-word = input("Enter a word: ")
-print("\nHer's  each letter in your word")
-for letter in word:
-    print(letter)
+class Customer:
+    def __init__(self,firstname,lastname,email,pin):
+        self.firstname=firstname
+        self.lastname=lastname
+        self.email=email
+        self.pin=pin
 
-word = input("Enter a word: ")
+    def __str__():
+        return "first:" +first+ "lastname"+ lastname+ "email"+ email+ "pin"+pin
+
+    
