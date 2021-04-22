@@ -7,5 +7,18 @@ class Customer:
         self.email=email
         self.pin=pin
 
+    def createPin(firstname,lastname):
+        lenFirst=len(firstname)
+        lenLast=len(lastname)
+
+        initialPositionFirst= dictionary(firstname(1))
+        initialPositionLast= dictionary(lastname(1))
+        pin=lower(firstname(1)+lastname(1)+"-"+lenFirst+"-"+lenFirst+"-"+initialPositionFirst+"-"+initialPositionLast)
+
+
+    def dictionary(letter):
+        chaine = 'abcdefghijklmnopqrstuvwxyz'
+        print (1+chaine.index(letter))
+
     
     
