@@ -1,6 +1,6 @@
 # Loopy String
-# Francoise RUCH
-# Emeline JJ
+# Francoise RUCH - 23861
+# Emeline JJ - 23858
 # Salut
 word = input("Enter a word: ")
 print("\nHer's  each letter in your word")
