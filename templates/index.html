@@ -7,20 +7,16 @@
 {% block body %}
 <div class="content">
     <h1 style="text-align: center">Bank Application</h1>
-    {% if tasks|length < 1 %}
-    <h4 style="text-align: center">There are no tasks. Create one below!</h4>
-    {% else %}
     <table>
-        {% for task in tasks %}
+        
                 <th>
-                    <a href="/employee/{{task.id}}">Employee</a>
+                    <a href="">Employee</a>
                     <br>
                 </th>
                 <th>
-                    <a href="/customer/{{task.id}}">Customer</a>
+                    <a href="">Customer</a>
                 </th>
-        {% endfor %}
+        
     </table>
-    {% endif %}
 </div>
 {% endblock %}
