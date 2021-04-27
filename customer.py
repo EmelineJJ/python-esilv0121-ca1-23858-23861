@@ -6,19 +6,32 @@ class Customer:
         self.lastname=lastname
         self.email=email
         self.pin=pin
-
-    def createPin(firstname,lastname):
-        lenFirst=len(firstname)
-        lenLast=len(lastname)
-
-        initialPositionFirst= dictionary(firstname(1))
-        initialPositionLast= dictionary(lastname(1))
-        pin=lower(firstname(1)+lastname(1)+"-"+lenFirst+"-"+lenFirst+"-"+initialPositionFirst+"-"+initialPositionLast)
-
-
+   
     def dictionary(letter):
         chaine = 'abcdefghijklmnopqrstuvwxyz'
-        print (1+chaine.index(letter))
+        return(1+chaine.index(letter))
 
     
+
+    def createPin(firstname,lastname):
+
+        lenFirst=len(firstname)
+        lenLast=len(lastname)       
+        
+        lenTotal=lenFirst+lenLast
+
+        
+        initialPositionFirst=dictionary(firstname[0].lower())
+        initialPositionLast= dictionary(lastname[0].lower())
+        pin=((firstname[0]+lastname[0])+"-"+lenTotal+"-"+initialPositionFirst+"-"+initialPositionLast).lower()
+        return pin
+    
+
+    a='Boi'
+    b=dictionary(a[0].lower())
+    print(b)
+
+    print(createPin('Joe', 'Smith'))
+    
+      
     
