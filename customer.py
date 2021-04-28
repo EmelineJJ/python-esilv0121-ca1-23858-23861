@@ -1,5 +1,8 @@
 # Emeline JJ - 23858
 # Francoise RUCH - 23861
+
+from datetime import date
+
 class Customer:
     def __init__(self,firstname,lastname,email,pin):
         self.firstname=firstname
@@ -9,6 +12,7 @@ class Customer:
    
     def dictionary(letter):
         chaine = 'abcdefghijklmnopqrstuvwxyz'
+        
         return(1+chaine.index(letter))
 
     
@@ -24,6 +28,7 @@ class Customer:
         initialPositionFirst=dictionary(firstname[0].lower())
         initialPositionLast= dictionary(lastname[0].lower())
         pin=((firstname[0]+lastname[0])+"-"+lenTotal+"-"+initialPositionFirst+"-"+initialPositionLast).lower()
+        
         return pin
     
 
@@ -33,5 +38,14 @@ class Customer:
 
     print(createPin('Joe', 'Smith'))
     
+
+    def transaction(firstname,lastname,value):
+        date=datetime.datetime.today().strftime('%Y-%m-%d')
+        if value <0:
+            typeTransaction='withdraw'
+        else:
+            typeTransaction='lodgement'
+
+        return 'fait'
       
     

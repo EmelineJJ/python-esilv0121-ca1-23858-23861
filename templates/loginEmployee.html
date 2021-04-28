@@ -7,11 +7,11 @@
 {% block body %}
 <div class="content">
     <h1 style="text-align: center">Login Employee</h1>
-    <input type="text" name="id">
+    <input type="text" name="id" style="text-align: center">
     <input type="button" value="Login" onclick="document.location.href='/employee/app';">
 
     {%if id == 'A1234' %}
-    <a href="/employee/app">Employee</a>
+    <a href="/employee/app"  >Employee</a>
     {%else%}
     <h4 style="text-align: center">This is not the good id, try again !</h4>
     {% endif %}
