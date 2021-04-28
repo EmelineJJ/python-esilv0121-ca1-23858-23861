@@ -28,7 +28,7 @@ class Customer:
     
 
     a='Boi'
-    b=dictionary(a[0].lower())
+    b=dictionary(a[0].lower() )
     print(b)
 
     print(createPin('Joe', 'Smith'))

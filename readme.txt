@@ -9,3 +9,6 @@ We create the folder templates with two html to start our application.
 
 link:
 https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input
+
+28/04/2021 : 
+We continue to work on HTML and function to create a PIN.
