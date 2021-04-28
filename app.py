@@ -21,5 +21,9 @@ def employee():
 def customer():
      return render_template("loginCustomer.html")
 
+@app.route('/employee/app')
+def appEmployee():
+    return render_template("appEmployee.html")
+    
 if __name__ == "__main__":
     app.run(debug=True)
