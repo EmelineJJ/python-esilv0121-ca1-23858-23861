@@ -1,12 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    hello
-</body>
-</html>
+{% extends 'base.html' %}
+
+{% block head %}
+<title>Menu Employee</title>
+{% endblock %}
+
+{% block body %}
+<div class="content">
+    <h1 style="text-align: center">Menu Employee</h1>
+    
+    <form action="" method = "POST"> 
+        Create Customers: 
+        First name:  
+        <input type="text" id="firstname" name="firstname" placeholder="Joe" required>
+        <br>
+        Last name:   
+        <input type="text" id="lastname" name="lastname" placeholder="Smith " required>
+        <br>
+        email:
+        <input type="text" id="email" name="email" placeholder="joesmith@gmail.com" required>
+        <br>
+        Account number:
+        <input type="text" id="numaccount" name="numaccount" placeholder="js-8-10-19"  required minlength="10" maxlength="10">
+        <br>
+        <input type="submit" value="Submit">
+    </form>
+        
+</div>
+{% endblock %}
