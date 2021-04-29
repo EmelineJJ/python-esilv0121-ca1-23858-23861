@@ -2,38 +2,14 @@
 
 {% block head %}
 <title>Login Employee</title>
-<SCRIPT TYPE="text/html">	
-
-    var varSeparateur = '';
-    varSeparateur = recupValeurElement("txtUnChamp").value;
-
-    function recupValeurElement(IdElement)
-    {
-        if (document.getElementById)
-        {
-            return document.getElementById(IdElement);
-        }
-        else if (document.all)
-        {
-            return document.all[IdElement];
-        }
-    }
-
-</SCRIPT>
 {% endblock %}
 
 {% block body %}
 <div class="content">
     <h1 style="text-align: center">Login Employee</h1>
     <input type="text" id="password" name="password" required>
-    <input type="button" value="Login" >
-
-    {%if id == pass.value %}
-    <a href="/employee/app" ></a>
-    {%else%}
-    <h4 style="text-align: center">This is not the good id, try again !</h4>
-    {% endif %}
-
+    <input type="button" value="Login" onclick="document.location.href='/employee/app';">
+    
 </div>
 {% endblock %}
 
