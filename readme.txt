@@ -19,6 +19,7 @@ Thanks to the prof we have now the beginning of customer.py it means the functio
 An opening menu should ask if you are a Bank Employee or a Customer.
 To successfully login as a bank employee you must type in the pin 'A1234
 WE talk about the html result, what it will look at
+We begin to create menu for employee and customer with differents option (create/delete/transaction/list)
 
 for 06/05//2021:
 look at the UML diagrams 
