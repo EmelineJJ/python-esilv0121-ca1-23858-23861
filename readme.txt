@@ -16,6 +16,8 @@ We continue to work on HTML and function to create a PIN.
 
 29/04/2021 :
 Thanks to the prof we have now the beginning of customer.py it means the function of a dictionnary and a function which create a code Pin
+An opening menu should ask if you are a Bank Employee or a Customer.
+To successfully login as a bank employee you must type in the pin 'A1234
 
 
 for 29/04/2021:
@@ -31,10 +33,7 @@ open and create and read
 class user abstract, inheritances
 private or public functions
 test module
+look at return when pin of employee is false
 
 link for flask:
 https://pythonspot.com/flask-web-forms/
-
-link for customize our html :
-https://www.youtube.com/watch?v=vntaBJUVlW8
-
