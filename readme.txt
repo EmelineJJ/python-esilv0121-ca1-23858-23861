@@ -13,8 +13,12 @@ https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input
 28/04/2021 : 
 We continue to work on HTML and function to create a PIN.
 
+
+29/04/2021 :
+Thanks to the prof we have now the beginning of customer.py it means the function of a dictionnary and a function which create a code Pin
+
+
 for 29/04/2021:
-question of problem dictionnary is not defined
 if and else apply to a button 
 look at the UML diagrams 
 do we use database for customers or txt is enough

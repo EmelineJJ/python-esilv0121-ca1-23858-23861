@@ -3,7 +3,7 @@
 
 from datetime import date
    
-def dictionaryx(letter):
+def dictionary(letter):
     chaine = 'abcdefghijklmnopqrstuvwxyz'
     return(1+chaine.index(letter))
 
@@ -23,28 +23,36 @@ class Customer:
         
         lenTotal=lenFirst+lenLast
 
-        
-        initialPositionFirst=dictionaryx(firstname[0].lower())
-        initialPositionLast= dictionaryx(lastname[0].lower())
-        pin=((firstname[0]+lastname[0])+"-"+lenTotal+"-"+initialPositionFirst+"-"+initialPositionLast).lower()
+        initialPositionFirst=dictionary(firstname[0].lower())
+        initialPositionLast= dictionary(lastname[0].lower())
+        pin=(firstname[0].lower()+lastname[0].lower()+"-"+str(lenTotal)+"-"+str(initialPositionFirst)+"-"+str(initialPositionLast))
         
         return pin
     
 
-    a='Boi'
-    b=dictionaryx(a[0].lower() )
-    print(b)
-
+    
     print(createPin('Joe', 'Smith'))
     
-
-    def transaction(firstname,lastname,value):
-        date=datetime.datetime.today().strftime('%Y-%m-%d')
+    
+    def transaction(firstname,lastname,value,typeOfAccount):
+        dateOfTransaction=date.today().strftime('%Y-%m-%d')
+        
         if value <0:
             typeTransaction='withdraw'
         else:
             typeTransaction='lodgement'
+        
+        #balancesOfAccount= (balance of old account)- value
 
         return 'fait'
       
+
+    def FoundBalanceAccount(firstname,lastname,typeOfAccount):
+        if typeOfAccount=='savings':
+            balance = value #a coder
+        else:
+            balance = value #a coder
+
+            
+
     
