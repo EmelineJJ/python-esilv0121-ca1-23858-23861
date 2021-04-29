@@ -1,7 +1,7 @@
 # Francoise RUCH - 23861
 # Emeline JJ - 23858
 
-from flask import Flask, render_template,url_for
+from flask import Flask, render_template,request
 
 app = Flask(__name__)
 
@@ -18,8 +18,11 @@ def employee():
 def customer():
      return render_template("loginCustomer.html")
 
-@app.route('/employee/app')
+@app.route('/employee/app', methods=["POST"])
 def appEmployee():
+    id = 'A1234'
+    password=request.form['password']
+
     if password == id :
         return render_template("appEmployee.html")
     else:
