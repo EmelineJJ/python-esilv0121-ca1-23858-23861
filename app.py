@@ -22,7 +22,6 @@ def customer():
 def appEmployee():
     id = 'A1234'
     password=request.form['password']
-
     if password == id :
         return render_template("appEmployee.html")
     else:
