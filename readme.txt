@@ -37,3 +37,6 @@ look at return when pin of employee is false
 
 link for flask:
 https://pythonspot.com/flask-web-forms/
+
+link customize login:
+https://www.youtube.com/watch?v=vntaBJUVlW8
