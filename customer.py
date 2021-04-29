@@ -16,7 +16,7 @@ class Customer:
         self.pin=pin
 
 
-    def createPin(firstname,lastname):
+    def createAccountNumber(firstname,lastname):
 
         lenFirst=len(firstname)
         lenLast=len(lastname)       
@@ -25,12 +25,18 @@ class Customer:
 
         initialPositionFirst=dictionary(firstname[0].lower())
         initialPositionLast= dictionary(lastname[0].lower())
-        pin=(firstname[0].lower()+lastname[0].lower()+"-"+str(lenTotal)+"-"+str(initialPositionFirst)+"-"+str(initialPositionLast))
+        accountNum=(firstname[0].lower()+lastname[0].lower()+"-"+str(lenTotal)+"-"+str(initialPositionFirst)+"-"+str(initialPositionLast))
         
+        return accountNum
+    
+    def createPin(firstname,lastname):
+
+        initialPositionFirst=dictionary(firstname[0].lower())
+        initialPositionLast= dictionary(lastname[0].lower())
+        pin=str(initialPositionFirst)+str(initialPositionLast)
         return pin
     
-
-    
+    print(createAccountNumber('Joe', 'Smith'))
     print(createPin('Joe', 'Smith'))
     
     
