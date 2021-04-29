@@ -15,7 +15,7 @@ def home():
 
 @app.route('/employee')
 def employee():
-     return render_template("loginEmployee.html")
+     return render_template("loginEmployee.html", id = 'A1234')
    
 @app.route('/customer')
 def customer():
