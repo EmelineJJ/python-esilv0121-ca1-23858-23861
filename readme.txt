@@ -21,20 +21,29 @@ To successfully login as a bank employee you must type in the pin 'A1234
 WE talk about the html result, what it will look at
 We begin to create menu for employee and customer with differents option (create/delete/transaction/list)
 
+01/05/2021:
+create customer
+create savings and currents account txt for each new customer in their folder which names is their pin code
+transactions with writting in the txt
+
 for 06/05//2021:
 look at the UML diagrams 
-do we use database for customers or txt is enough
-we know from where the money go but we don't know where it goes
+(do we use database for customers or txt is enough)
 
 
 to do list:
-txt for customers 
-open and create and read
+finish the login for customer
+delete customer
+html for transactions
+show list of customers and option their balances
+show transaction history for specified account
+restriction to not have a negative balance
 class user abstract, inheritances
 private or public functions
 test module
 look at return when pin of employee is false
 
+short report <1000 words
 
 link for flask:
 https://pythonspot.com/flask-web-forms/
