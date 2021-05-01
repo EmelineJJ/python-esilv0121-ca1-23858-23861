@@ -25,6 +25,9 @@ We begin to create menu for employee and customer with differents option (create
 create customer
 create savings and currents account txt for each new customer in their folder which names is their pin code
 transactions with writting in the txt
+delete customer
+restriction to not have a negative balance
+
 
 for 06/05//2021:
 look at the UML diagrams 
@@ -34,11 +37,10 @@ app.py good?
 
 to do list:
 finish the login for customer
-delete customer
 html for transactions
 show list of customers and option their balances
 show transaction history for specified account
-restriction to not have a negative balance
+
 class user abstract, inheritances
 private or public functions
 test module

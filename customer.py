@@ -64,7 +64,7 @@ class Customer:
     
     
     def transaction(firstname,lastname,value,typeOfAccount):
-        
+        transfer=False
         dateOfTransaction=date.today().strftime('%d-%m-%Y')
         
         if int(value) <0:
@@ -75,13 +75,16 @@ class Customer:
         
         nameFile = createPin(firstname,lastname)
         nametxtFile = createAccountNumber(firstname,lastname)
-        balancesOfAccount= int(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount)) + int(value)
-
-        filetransaction = open('Accounts/'+nameFile+'/'+ nametxtFile + '-'+typeOfAccount+'.txt','a')
-        filetransaction.write('\n'+ dateOfTransaction +'\t'+ typeTransaction +'\t'+ value +'\t'+ str(balancesOfAccount))
-        filetransaction.close()
         
-        return 'done'
+        balancesOfAccount= int(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount)) + int(value)
+        if (balancesOfAccount >=0):
+            filetransaction = open('Accounts/'+nameFile+'/'+ nametxtFile + '-'+typeOfAccount+'.txt','a')
+            filetransaction.write('\n'+ dateOfTransaction +'\t'+ typeTransaction +'\t'+ value +'\t'+ str(balancesOfAccount))
+            filetransaction.close()
+            transfer=True
+        
+
+        return transfer
       
 
 
@@ -99,37 +102,36 @@ class Customer:
         filesaving = open('Accounts/'+nameFile+'/'+ nametxtFile + '-savings.txt','w')
         filesaving.write(dateOfCreation +'\t' +'Creation'+'\t'+'0'+'\t'+'0')
         filesaving.close()
+        
         filecurrent = open('Accounts/'+nameFile+'/'+ nametxtFile + '-currents.txt','w')
         filecurrent.write(dateOfCreation + '\t' +'Creation'+'\t'+'0'+'\t'+'0')
         filecurrent.close()
         
     def deleteCustomer(firstname,lastname):
+        delete=False
         
         nameFile = createPin(firstname,lastname)
         nametxtFile = createAccountNumber(firstname,lastname)
 
         #savings account
         balanceSavings = int(FoundBalanceAccount(nameFile, nametxtFile, 'savings'))
-        print(balanceSavings)
+        
         #currents account
         balanceCurrents = int(FoundBalanceAccount(nameFile, nametxtFile, 'currents'))
         
-        print(balanceCurrents)
-        
-
         if (balanceCurrents==0 and balanceSavings==0):
             
             os.remove('Accounts/'+nameFile+'/'+ nametxtFile + '-savings.txt')
             os.remove('Accounts/'+nameFile+'/'+ nametxtFile + '-currents.txt')
             fileToDelete = Path('Accounts/'+nameFile)
             fileToDelete.rmdir()
-           
-        else:
-            print('false')
-            #faut que balance soit a 0
+            delete=True
+        
+        return delete
 
-    newCustomer('Francoise', 'Ruch', 'f@gmail.com')
-    transaction('Francoise', 'Ruch', '500', 'savings')
+    #('Francoise', 'Ruch', 'f@gmail.com')
+    #transaction('Francoise', 'Ruch', '500', 'savings')
+    print(transaction('Francoise', 'Ruch', '-550', 'savings'))
     deleteCustomer('Francoise','Ruch')
         
 
