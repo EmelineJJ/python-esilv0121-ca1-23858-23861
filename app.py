@@ -2,6 +2,7 @@
 # Emeline JJ - 23858
 
 from flask import Flask, render_template,request
+import os
 
 app = Flask(__name__)
 
@@ -27,5 +28,23 @@ def appEmployee():
     else:
         return "Try again !"
 
+
+@app.route('/customer/app', methods=["POST"])
+def appCustomer():
+
+    entries = os.listdir('Accounts/')
+    print(entries)
+    exist=False
+    pin=request.form['pin']
+    for i in range(len(entries)):
+        if entries[i] == pin :
+            exist = True
+
+    if exist == True:
+        return render_template("appCustomer.html")
+    else :
+        return 'Try again !'
+
 if __name__ == "__main__":
     app.run(debug=True)
+

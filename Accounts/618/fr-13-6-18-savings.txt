@@ -1,3 +1,0 @@
-01-05-2021	Creation	0	0
-01-05-2021	Lodgement	50	50
-01-05-2021	Withdrawal	-50	0
