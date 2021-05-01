@@ -32,10 +32,9 @@ def FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount):
         
         filetransaction = open('Accounts/'+nameFile+'/'+ nametxtFile + '-'+typeOfAccount+'.txt','r')
         filelines = filetransaction.readlines()
-        filetransaction.close()
         lastline = filelines[ len( filelines )-1]
-        ligne = lastline.split('\t')
-        balance = lastline[3]
+        va = lastline.split('\t')
+        balance = va[3]
         print(balance)
         return balance
 
