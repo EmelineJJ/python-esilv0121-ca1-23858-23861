@@ -12,6 +12,13 @@ def createPin(firstname,lastname):
 
     initialPositionFirst=dictionary(firstname[0].lower())
     initialPositionLast= dictionary(lastname[0].lower())
+    if(initialPositionFirst<10):
+        initialPositionFirst=str(0)+str(initialPositionFirst)
+    
+    if(initialPositionLast<10):
+        initialPositionLast=str(0)+str(initialPositionLast)
+
+
     pin=str(initialPositionFirst)+str(initialPositionLast)
     return pin
 
@@ -93,12 +100,11 @@ class Customer:
         
 
         
-        
+print(createPin('Francoise', 'Ruch'))
+print(createPin('Zoe', 'An'))
 
     
-    newCustomer('Francoise', 'Ruch', 'fr@gmail.com')
-    transaction('Francoise', 'Ruch', '50', 'savings')
-    transaction('Francoise', 'Ruch', '-50', 'savings')
+    
 
 
             
