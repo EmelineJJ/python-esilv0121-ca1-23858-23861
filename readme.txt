@@ -29,6 +29,7 @@ transactions with writting in the txt
 for 06/05//2021:
 look at the UML diagrams 
 (do we use database for customers or txt is enough)
+app.py good?
 
 
 to do list:
@@ -42,6 +43,7 @@ class user abstract, inheritances
 private or public functions
 test module
 look at return when pin of employee is false
+maybe delete customers.txt
 
 short report <1000 words
 

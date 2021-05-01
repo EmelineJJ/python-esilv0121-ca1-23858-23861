@@ -3,6 +3,7 @@
 
 from datetime import date
 from pathlib import Path
+import os
    
 def dictionary(letter):
     chaine = 'abcdefghijklmnopqrstuvwxyz'
@@ -31,6 +32,12 @@ def createAccountNumber(firstname,lastname):
 
         initialPositionFirst=dictionary(firstname[0].lower())
         initialPositionLast= dictionary(lastname[0].lower())
+        if(initialPositionFirst<10):
+            initialPositionFirst=str(0)+str(initialPositionFirst)
+    
+        if(initialPositionLast<10):
+            initialPositionLast=str(0)+str(initialPositionLast)
+
         accountNum=(firstname[0].lower()+lastname[0].lower()+"-"+str(lenTotal)+"-"+str(initialPositionFirst)+"-"+str(initialPositionLast))
         
         return accountNum
@@ -54,8 +61,6 @@ class Customer:
         self.pin=pin
 
 
-    print(createAccountNumber('Joe', 'Smith'))
-    print(createPin('Joe', 'Smith'))
     
     
     def transaction(firstname,lastname,value,typeOfAccount):
@@ -98,10 +103,36 @@ class Customer:
         filecurrent.write(dateOfCreation + '\t' +'Creation'+'\t'+'0'+'\t'+'0')
         filecurrent.close()
         
-
+    def deleteCustomer(firstname,lastname):
         
-print(createPin('Francoise', 'Ruch'))
-print(createPin('Zoe', 'An'))
+        nameFile = createPin(firstname,lastname)
+        nametxtFile = createAccountNumber(firstname,lastname)
+
+        #savings account
+        balanceSavings = int(FoundBalanceAccount(nameFile, nametxtFile, 'savings'))
+        print(balanceSavings)
+        #currents account
+        balanceCurrents = int(FoundBalanceAccount(nameFile, nametxtFile, 'currents'))
+        
+        print(balanceCurrents)
+        
+
+        if (balanceCurrents==0 and balanceSavings==0):
+            
+            os.remove('Accounts/'+nameFile+'/'+ nametxtFile + '-savings.txt')
+            os.remove('Accounts/'+nameFile+'/'+ nametxtFile + '-currents.txt')
+            fileToDelete = Path('Accounts/'+nameFile)
+            fileToDelete.rmdir()
+           
+        else:
+            print('false')
+            #faut que balance soit a 0
+
+    newCustomer('Francoise', 'Ruch', 'f@gmail.com')
+    transaction('Francoise', 'Ruch', '500', 'savings')
+    deleteCustomer('Francoise','Ruch')
+        
+
 
     
     
