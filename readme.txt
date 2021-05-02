@@ -41,12 +41,12 @@ app.py good?
 
 
 to do list:
-finish the login for customer
-html for transactions
+finish the login for customer(we just identify the pin code) maybe firstname,lastname
+
 show list of customers and option their balances
 show transaction history for specified account
-link our python function to the Html
-remove app.py
+
+remove app.py,employee
 error in app employee is everywhere we need to differenciate the error message
 
 class user abstract, inheritances
