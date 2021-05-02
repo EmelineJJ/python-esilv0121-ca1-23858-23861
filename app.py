@@ -21,12 +21,13 @@ def customer():
 
 @app.route('/employee/app', methods=["POST"])
 def appEmployee():
-    id = 'A1234'
-    password=request.form['password']
-    if password == id :
-        return render_template("appEmployee.html")
-    else:
-        return "Try again !"
+    err = None
+    if request.method == 'POST' :
+        if request.form['password'] != 'A1234':
+            err = 'Invalid Password. Please try again.'
+        else:
+            return render_template("appEmployee.html")
+    return render_template("loginEmployee.html", error=err)
 
 
 @app.route('/customer/app', methods=["POST"])
