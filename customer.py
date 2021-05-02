@@ -52,7 +52,19 @@ def FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount):
         filetransaction.close()
         return balance
 
-
+def deleteLine(deletePin):
+    fn = 'Accounts/customers.txt'
+    f = open(fn)
+    output = []
+    str=deletePin
+    for line in f:
+        if not line.startswith(str):
+            output.append(line)
+    f.close()
+    f = open(fn, 'w')
+    f.writelines(output)
+    f.close()
+    
 class Customer:
     def __init__(self,firstname,lastname,email,pin):
         self.firstname=firstname
@@ -84,19 +96,14 @@ class Customer:
             transfer=True
         
 
+
         return transfer
       
 
 
 
     def newCustomer(firstname,lastname,email):
-        path = 'Accounts/customers.txt'
-        # Vérifier si le chemin existe ou non
-        if os.path.exists(path) :
-            exist=True
-        else:
-            filesaving = open('Accounts/'+'customers.txt','w')
-        
+       
         
             
         dateOfCreation =date.today().strftime('%d-%m-%Y')
@@ -115,6 +122,22 @@ class Customer:
         filecurrent = open('Accounts/'+nameFile+'/'+ nametxtFile + '-currents.txt','w')
         filecurrent.write(dateOfCreation + '\t' +'Creation'+'\t'+'0'+'\t'+'0')
         filecurrent.close()
+
+        path = 'Accounts/customers.txt'
+        # Vérifier si le chemin existe ou non
+        if os.path.exists(path) :
+            filecustomer = open('Accounts/customers.txt','a')
+            filecustomer.write('\n'+ nameFile + '\t' +nametxtFile+'\t'+'savings')
+            filecustomer.write('\n'+nameFile + '\t' +nametxtFile+'\t'+'currents')
+        else:
+            filecustomer = open('Accounts/customers.txt','a')
+            filecustomer.write(nameFile + '\t' +nametxtFile+'\t'+'savings')
+            filecustomer.write('\n'+nameFile + '\t' +nametxtFile+'\t'+'currents')
+        
+        filecustomer.close()
+        
+
+        
         
     def deleteCustomer(firstname,lastname):
         delete=False
@@ -134,14 +157,17 @@ class Customer:
             os.remove('Accounts/'+nameFile+'/'+ nametxtFile + '-currents.txt')
             fileToDelete = Path('Accounts/'+nameFile)
             fileToDelete.rmdir()
+            deleteLine(nameFile)
+           
             delete=True
         
         return delete
 
     
-    
+    newCustomer('Jules', 'Joe', 'j@gmail.com')
     
     newCustomer('Emeline', 'Jacques', 'e@gmail.com')
-    #transaction('Francoise', 'Ruch', '500', 'savings')
-    #print(transaction('Francoise', 'Ruch', '-550', 'savings'))
-    deleteCustomer('Francoise','Ruch')
+    
+    newCustomer('Francoise', 'Ruch', 'f@gmail.com')
+    
+    deleteCustomer('Emeline','Jacques')

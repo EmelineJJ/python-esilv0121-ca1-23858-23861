@@ -30,7 +30,7 @@ restriction to not have a negative balance
 
 02/05/2021
 some change in loginEmployee : text change in password and an error if the password is not correct.
-work on customer.txt
+customers.txt
 
 for 06/05//2021:
 look at the UML diagrams 
@@ -56,3 +56,10 @@ https://pythonspot.com/flask-web-forms/
 
 link customize login:
 https://www.youtube.com/watch?v=vntaBJUVlW8
+
+
+code use for delete in customers.txt :
+https://mistonline.in/wp/delete-line-text-file-using-python/
+
+code use for the beginning of the HTML :
+https://www.youtube.com/watch?v=Z1RJmh_OqeA
