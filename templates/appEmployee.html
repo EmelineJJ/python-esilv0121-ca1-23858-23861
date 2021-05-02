@@ -8,57 +8,75 @@
 <div class="content">
     <h1 style="text-align: center">Menu Employee</h1>
     
-    <form action="" method = "POST"> 
+    <form action="/employee/app/create" method = "POST"> 
         Create Customers:
         <br>
         First name:  
-        <input type="text" id="firstname" name="firstname" placeholder="Joe" required>
+        <input type="text" id="createfirstname" name="createfirstname" placeholder="Joe" >
         <br>
         Last name:   
-        <input type="text" id="lastname" name="lastname" placeholder="Smith " required>
+        <input type="text" id="createlastname" name="createlastname" placeholder="Smith " >
         <br>
         email:
-        <input type="text" id="email" name="email" placeholder="joesmith@gmail.com" required>
+        <input type="text" id="email" name="email" placeholder="joesmith@gmail.com" >
         <br>
-        
         <input type="submit" value="Create">
         <br>
+        {% if error %}
+        <p class="error"><strong></strong> {{ error }}
+        {% endif %}
+        <br>
+    </form>
+    <form action="/employee/app/delete" method = "POST">
         <br>
         Delete Customers:
         <br>
         First name:  
-        <input type="text" id="firstname" name="firstname" placeholder="Joe" required>
+        <input type="text" id="deletefirstname" name="deletefirstname" placeholder="Joe" >
         <br>
         Last name:   
-        <input type="text" id="lastname" name="lastname" placeholder="Smith " required>
-        <br>
-        <br>
-        Account Number:
-        <input type="text" id="numaccount" name="numaccount" placeholder="js-8-10-19"  required minlength="10" maxlength="10">
+        <input type="text" id="deletelastname" name="deletelastname" placeholder="Smith " >
         <br>
         <input type="submit" value="Delete">
         <br>
+        {% if error %}
+        <p class="error"><strong></strong> {{ error }}
+        {% endif %}
+        <br>
+    </form>
+    <form action="/employee/app/transaction" method = "POST"> 
         <br>
         Transactions:
         <br>
-        Account Number:
-        <input type="text" id="numaccount" name="numaccount" placeholder="js-8-10-19"  required minlength="10" maxlength="10">
+        First name:  
+        <input type="text" id="transactionfirstname" name="transactionfirstname" placeholder="Joe" >
+        <br>
+        Last name:   
+        <input type="text" id="transactionlastname" name="transactionlastname" placeholder="Smith " >
+        <br>
         <br>
         Type of Account:
         <br>
-        <input type="radio" id="current" name="actype" value="Current">
-        <label for="Current">Current</label><br>
-        <input type="radio" id="saving" name="actype" value="Saving">
-        <label for="Saving">Saving</label><br>
+        <input type="radio" id="typeofaccount1" name="actype" value="currents">
+        <label for="currents">Current</label><br>
+        <input type="radio" id="typeofaccount2" name="actype" value="savings">
+        <label for="savings">Saving</label><br>
         Value:
         <br>
-        <input type="text" id="valuetransac" name="valuetransac" placeholder="500"  required>
-        <br><br>
+        <input type="text" id="valuetransaction" name="valuetransaction" placeholder="500"  >
+        <br>
+        <input type="submit" value="Validate">
+        <br>
+        {% if error %}
+        <p class="error"><strong></strong> {{ error }}
+        {% endif %}
+        <br>
+        <br>
         List:
         <br>
         <input type="checkbox" id="balances" name="balances" value="Balances">
         <label for="Balances"> Balances</label><br>
     </form>
-        
+
 </div>
 {% endblock %}
