@@ -61,7 +61,7 @@ class Customer:
         self.pin=pin
 
 
-    
+   
     
     def transaction(firstname,lastname,value,typeOfAccount):
         transfer=False
@@ -90,6 +90,15 @@ class Customer:
 
 
     def newCustomer(firstname,lastname,email):
+        path = 'Accounts/customers.txt'
+        # Vérifier si le chemin existe ou non
+        if os.path.exists(path) :
+            exist=True
+        else:
+            filesaving = open('Accounts/'+'customers.txt','w')
+        
+        
+            
         dateOfCreation =date.today().strftime('%d-%m-%Y')
         nameFile = createPin(firstname,lastname)
         p = Path('Accounts/' + nameFile)
@@ -129,17 +138,10 @@ class Customer:
         
         return delete
 
-    #('Francoise', 'Ruch', 'f@gmail.com')
+    
+    
+    
+    newCustomer('Emeline', 'Jacques', 'e@gmail.com')
     #transaction('Francoise', 'Ruch', '500', 'savings')
-    print(transaction('Francoise', 'Ruch', '-550', 'savings'))
+    #print(transaction('Francoise', 'Ruch', '-550', 'savings'))
     deleteCustomer('Francoise','Ruch')
-        
-
-
-    
-    
-
-
-            
-
-    
