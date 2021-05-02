@@ -31,6 +31,8 @@ restriction to not have a negative balance
 02/05/2021
 some change in loginEmployee : text change in password and an error if the password is not correct.
 customers.txt
+we connect the python and the html for create, delete and make a transaction
+do a error message when the transaction is not possible
 
 for 06/05//2021:
 look at the UML diagrams 
@@ -43,6 +45,9 @@ finish the login for customer
 html for transactions
 show list of customers and option their balances
 show transaction history for specified account
+link our python function to the Html
+remove app.py
+error in app employee is everywhere we need to differenciate the error message
 
 class user abstract, inheritances
 private or public functions
