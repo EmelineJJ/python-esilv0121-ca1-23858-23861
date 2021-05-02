@@ -180,13 +180,12 @@ def customer():
 
 @app.route('/employee/app', methods=["POST"])
 def appEmployee():
-    err = None
     if request.method == 'POST' :
         if request.form['password'] != 'A1234':
-            err = 'Invalid Password. Please try again.'
+            return render_template("loginEmployee.html", error='Invalid Password. Please try again.')
         else:
             return render_template("appEmployee.html")
-    return render_template("loginEmployee.html", error=err)
+    
 
 
 @app.route('/customer/app', methods=["POST"])
@@ -200,10 +199,10 @@ def appCustomer():
         if entries[i] == pin :
             exist = True
 
-    if exist == True:
+    if exist == False:
+        return render_template("loginCustomer.html", error = 'Try again')
+    else : 
         return render_template("appCustomer.html")
-    else :
-        return 'Try again !'
 
 @app.route('/employee/app/create',methods=["POST"])
 def createCustomer():

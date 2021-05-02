@@ -33,6 +33,7 @@ some change in loginEmployee : text change in password and an error if the passw
 customers.txt
 we connect the python and the html for create, delete and make a transaction
 do a error message when the transaction is not possible
+look at return when pin of employee is false
 
 for 06/05//2021:
 look at the UML diagrams 
@@ -52,7 +53,7 @@ error in app employee is everywhere we need to differenciate the error message
 class user abstract, inheritances
 private or public functions
 test module
-look at return when pin of employee is false
+
 
 short report <1000 words
 
