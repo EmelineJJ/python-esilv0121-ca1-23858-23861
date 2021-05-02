@@ -28,6 +28,9 @@ transactions with writting in the txt
 delete customer
 restriction to not have a negative balance
 
+02/05/2021
+some change in loginEmployee : text change in password and an error if the password is not correct.
+work on customer.txt
 
 for 06/05//2021:
 look at the UML diagrams 
@@ -45,7 +48,6 @@ class user abstract, inheritances
 private or public functions
 test module
 look at return when pin of employee is false
-maybe delete customers.txt
 
 short report <1000 words
 
