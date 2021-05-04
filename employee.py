@@ -19,24 +19,20 @@ class Employee:
     def listofcustomers(withbalances):
         listofallcustomers=[]
         allcustomers= open("Accounts\customers.txt", "r") 
-        lines = allcustomers.read().split('\t')
+        lines = allcustomers.read().split( )
         customer = 0
-        lines =lines.strip("\n")
-
-        for cust in lines:
-            if withbalances==True:
-                print(str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])))
-                line= lines[0+customer]+ lines[1+customer]+ lines[2+customer]+ lines[3+customer]+lines[4+customer]+ str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer]))
+       
+        if withbalances==True:
+            while customer<len(lines):
+                line= lines[0+customer]+ lines[1+customer]+ lines[2+customer]+ lines[3+customer]+lines[4+customer]+ str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])) 
                 listofallcustomers.append(line)
-                customer= customer+1
-            else:
-            
-                line= lines[0+customer]+ lines[1+customer]+ lines[2+customer]+ lines[3+customer]
+                customer= customer+5
+        else:
+            while customer<len(lines):
+                line= lines[0+customer]+ lines[1+customer]+ lines[2+customer]+ lines[3+customer]+lines[4+customer]
                 listofallcustomers.append(line)
-                customer= customer+1
+                customer= customer+5
 
-
-        
         return listofallcustomers
     
     print(listofcustomers(True))

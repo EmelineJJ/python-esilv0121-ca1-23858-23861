@@ -164,10 +164,14 @@ class Customer:
         return delete
 
     
-    newCustomer('Jules', 'Joe', 'j@gmail.com')
+    #newCustomer('Jules', 'Joe', 'j@gmail.com')
     
-    newCustomer('Emeline', 'Jacques', 'e@gmail.com')
+    #newCustomer('Emeline', 'Jacques', 'e@gmail.com')
     
-    newCustomer('Francoise', 'Ruch', 'f@gmail.com')
+    #newCustomer('Francoise', 'Ruch', 'f@gmail.com')
     
-    deleteCustomer('Emeline','Jacques')
+    transaction('Emeline', 'Jacques', '500', 'savings')
+    transaction('Emeline', 'Jacques', '500', 'currents')
+
+    transaction('Francoise', 'Ruch', '200', 'savings')
+    transaction('Francoise', 'Ruch', '10', 'currents')
