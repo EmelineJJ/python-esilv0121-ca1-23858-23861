@@ -12,8 +12,8 @@ def FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount):
         filetransaction.close()
         return balance
 
-class Employee:
-    def __init__(self,pin):
+class Employee(Users):
+    def __init__(self):
         self.pin = 'A1234'
 
     def listofcustomers(withbalances):

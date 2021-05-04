@@ -65,16 +65,13 @@ def deleteLine(deletePin):
     f.writelines(output)
     f.close()
     
-class Customer:
-    def __init__(self,firstname,lastname,email,pin):
+class Customer(Users):
+    def __init__(self,firstname,lastname,email):
         self.firstname=firstname
         self.lastname=lastname
         self.email=email
-        self.pin=pin
+        self.pin = createPin(self.firstname, self.lastname)
 
-
-   
-    
     def transaction(firstname,lastname,value,typeOfAccount):
         transfer=False
         dateOfTransaction=date.today().strftime('%d-%m-%Y')
