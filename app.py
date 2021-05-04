@@ -211,7 +211,7 @@ def createCustomer():
     email = request.form['email']
     if request.method =="POST":
         Customer.newCustomer(firstna,lastna,email)
-    return render_template("appEmployee.html", error= 'Customer created')
+    return render_template("appEmployee.html", error1= 'Customer created')
 
 @app.route('/employee/app/delete',methods=["POST"])
 def deleteCustomer():
@@ -222,9 +222,9 @@ def deleteCustomer():
         
         result = Customer.deleteCustomer(firstna,lastna)
         if result == False:
-            return render_template("appEmployee.html", error= 'The customer need to have 0 balances')
+            return render_template("appEmployee.html", error2= 'The customer need to have 0 balances')
         else :
-            return render_template("appEmployee.html", error= 'Customer deleted')
+            return render_template("appEmployee.html", error2= 'Customer deleted')
 
     
 
@@ -237,9 +237,9 @@ def transactionEmployee():
     if request.method =="POST":
         result = Customer.transaction(firstna, lastna, value, typeOfAccount)
         if result == False:
-            return render_template("appEmployee.html", error= 'Impossible transaction')
+            return render_template("appEmployee.html", error3= 'Impossible transaction')
         else :
-            return render_template("appEmployee.html", error= 'Transaction done')
+            return render_template("appEmployee.html", error3= 'Transaction done')
 
 @app.route('/customer/app/transaction',methods=["POST"])
 def transactionCustomer():
