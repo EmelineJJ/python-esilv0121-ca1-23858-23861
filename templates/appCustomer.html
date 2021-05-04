@@ -1,16 +1,16 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>Menu Employee</title>
+<title>Menu Customer</title>
 {% endblock %}
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Menu Employee</h1>
-    
+    <h1 style="text-align: center">Menu Customer</h1>
+    <fieldset>
+        <legend>Transactions</legend>
     <form action="/customer/app/transaction" method = "POST"> 
-        <br>
-        Transactions:
+
         <br>
         First name:  
         <input type="text" id="transactionfirstname" name="transactionfirstname" placeholder="Joe" >
@@ -40,6 +40,6 @@
         <input type="checkbox" id="balances" name="balances" value="Balances">
         <label for="Balances"> Balances</label><br>
     </form>
-        
+    </fieldset>    
 </div>
 {% endblock %}

@@ -6,31 +6,33 @@
 
 {% block body %}
 <div class="content">
+   
     <h1 style="text-align: center">Menu Employee</h1>
-    
-    <form action="/employee/app/create" method = "POST"> 
-        Create Customers:
-        <br>
-        First name:  
-        <input type="text" id="createfirstname" name="createfirstname" placeholder="Joe" >
-        <br>
-        Last name:   
-        <input type="text" id="createlastname" name="createlastname" placeholder="Smith " >
-        <br>
-        email:
-        <input type="text" id="email" name="email" placeholder="joesmith@gmail.com" >
-        <br>
-        <input type="submit" value="Create">
-        <br>
-        {% if error %}
-        <p class="error"><strong></strong> {{ error }}
-        {% endif %}
-        <br>
-    </form>
+    <fieldset>
+        <legend>Create Customers</legend>
+        <form action="/employee/app/create" method = "POST"> 
+            <br>
+            First name:  
+            <input type="text" id="createfirstname" name="createfirstname" placeholder="Joe" >
+            <br>
+            Last name:   
+            <input type="text" id="createlastname" name="createlastname" placeholder="Smith " >
+            <br>
+            email:
+            <input type="text" id="email" name="email" placeholder="joesmith@gmail.com" >
+            <br>
+            <input type="submit" value="Create">
+            <br>
+            {% if error %}
+            <p class="error"><strong></strong> {{ error }}
+            {% endif %}
+            <br>
+        </form>
+    </fieldset>
+    <fieldset>
+    <legend>Delete Customers</legend>
     <form action="/employee/app/delete" method = "POST">
-        <br>
-        Delete Customers:
-        <br>
+
         First name:  
         <input type="text" id="deletefirstname" name="deletefirstname" placeholder="Joe" >
         <br>
@@ -44,9 +46,11 @@
         {% endif %}
         <br>
     </form>
+    </fieldset> 
+    <fieldset>
+    <legend>Transactions:</legend>
     <form action="/employee/app/transaction" method = "POST"> 
-        <br>
-        Transactions:
+
         <br>
         First name:  
         <input type="text" id="transactionfirstname" name="transactionfirstname" placeholder="Joe" >
@@ -72,11 +76,24 @@
         {% endif %}
         <br>
         <br>
-        List:
+    </fieldset>
+    <fieldset>
+        <legend>List:</legend>
         <br>
         <input type="checkbox" id="balances" name="balances" value="Balances">
         <label for="Balances"> Balances</label><br>
+        <table style='width: 100%;'>
+            <tr>
+                <th>PIN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Accounts Code</th>
+                <th>Type of Account</th>
+            </tr>
+        </table>
     </form>
+    </fieldset>
+    
 
 </div>
 {% endblock %}
