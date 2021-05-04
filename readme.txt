@@ -35,6 +35,11 @@ we connect the python and the html for create, delete and make a transaction
 do a error message when the transaction is not possible
 look at return when pin of employee is false
 
+04/05/2021 :
+problem solved : error in app employee is everywhere we need to differenciate the error message
+research on showing a list of customer 
+methode created for create a list with the customers.txt
+
 for 06/05//2021:
 look at the UML diagrams 
 (do we use database for customers or txt is enough)
@@ -48,7 +53,7 @@ show list of customers and option their balances
 show transaction history for specified account
 
 remove app.py,employee
-error in app employee is everywhere we need to differenciate the error message
+
 
 class user abstract, inheritances
 private or public functions
