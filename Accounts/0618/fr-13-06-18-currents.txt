@@ -1,2 +1,3 @@
 04-05-2021	Creation	0	0
 04-05-2021	Lodgement	10	10
+04-05-2021	Lodgement	10	20

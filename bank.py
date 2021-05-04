@@ -17,10 +17,10 @@ def dictionary(letter):
     chaine = 'abcdefghijklmnopqrstuvwxyz'
     return(1+chaine.index(letter))
 
-def createPin(cust):
+def createPin(firstname,lastname):
 
-    initialPositionFirst=dictionary(cust.firstname[0].lower())
-    initialPositionLast= dictionary(cust.lastname[0].lower())
+    initialPositionFirst=dictionary(firstname[0].lower())
+    initialPositionLast= dictionary(lastname[0].lower())
     if(initialPositionFirst<10):
         initialPositionFirst=str(0)+str(initialPositionFirst)
     
@@ -75,9 +75,9 @@ def deleteLine(deletePin):
 
 #region Inheritance Class : Customers
 class Customer(Users):
-    def __init__(self,firstname,lastname,email):
-        Users.__init__(self, pin)
-        self.pin = createPin(self)
+    def __init__(self,pin,firstname,lastname,email):
+        Users.__init__(self,pin)
+        self.pin = pin
         self.firstname=firstname
         self.lastname=lastname
         self.email=email
@@ -93,7 +93,7 @@ class Customer(Users):
         else:
             typeTransaction='Lodgement'
         
-        nameFile = createPin(self)
+        nameFile = createPin(self.firstname,self.lastname)
         nametxtFile = createAccountNumber(self)
         
         balancesOfAccount= int(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount)) + int(value)
@@ -108,7 +108,7 @@ class Customer(Users):
     #region Create new customer
     def newCustomer(self):   
         dateOfCreation =date.today().strftime('%d-%m-%Y')
-        nameFile = createPin(self)
+        nameFile = createPin(self.firstname,self.lastname)
         p = Path('Accounts/' + nameFile)
         try:
             p.mkdir()
@@ -141,7 +141,7 @@ class Customer(Users):
     #region Delete a customer
     def deleteCustomer(self):
         delete=False 
-        nameFile = createPin(self)
+        nameFile = createPin(self.firstname,self.lastname)
         nametxtFile = createAccountNumber(self)
 
         #savings account
@@ -165,13 +165,14 @@ class Customer(Users):
 
 
 #region Test
-j= Customer('Jules', 'Joe', 'j@gmail.com')
+p ='0000'
+j= Customer(p,'Jules', 'Joe', 'j@gmail.com')
 Customer.newCustomer(j)
     
-e= Customer('Emeline', 'Jacques', 'e@gmail.com')
+e= Customer(p,'Emeline', 'Jacques', 'e@gmail.com')
 Customer.newCustomer(e)
     
-f= Customer('Francoise', 'Ruch', 'f@gmail.com')
+f= Customer(p,'Francoise', 'Ruch', 'f@gmail.com')
 Customer.newCustomer(f)
     
 Customer.transaction(e, '500', 'savings')
@@ -245,9 +246,7 @@ def appEmployee():
 def appCustomer():
 
     entries = os.listdir('Accounts/')
-    print(entries)
     exist=False
-    pin=request.form['pin']
     for i in range(len(entries)):
         if entries[i] == pin :
             exist = True
@@ -263,7 +262,7 @@ def createCustomer():
     lastna = request.form['createlastname']
     email = request.form['email']
     if request.method =="POST":
-        new = Customer(firstna,lastna,email)
+        new = Customer('0000',firstna,lastna,email)
         Customer.newCustomer(new)
     return render_template("appEmployee.html", error1= 'Customer created')
 
@@ -271,10 +270,10 @@ def createCustomer():
 def deleteCustomer():
     firstna = request.form['deletefirstname']
     lastna = request.form['deletelastname']
-
+    email =  request.form['deleteemail']
     if request.method =="POST":
-        
-        result = Customer.deleteCustomer(firstna,lastna)
+        toDelete = Customer('0000',firstna,lastna, email)
+        result = Customer.deleteCustomer(toDelete)
         if result == False:
             return render_template("appEmployee.html", error2= 'The customer need to have 0 balances')
         else :
@@ -286,10 +285,12 @@ def deleteCustomer():
 def transactionEmployee():
     firstna = request.form['transactionfirstname']
     lastna = request.form['transactionlastname']
+    email =  request.form['transactionemail']
     value = request.form['valuetransaction']
     typeOfAccount = request.form['actype']
     if request.method =="POST":
-        result = Customer.transaction(firstna, lastna, value, typeOfAccount)
+        custom = Customer('0000',firstna, lastna, email)
+        result = Customer.transaction(custom, value, typeOfAccount)
         if result == False:
             return render_template("appEmployee.html", error3= 'Impossible transaction')
         else :
@@ -299,10 +300,12 @@ def transactionEmployee():
 def transactionCustomer():
     firstna = request.form['transactionfirstname']
     lastna = request.form['transactionlastname']
+    email =  request.form['transactionemail']
     value = request.form['valuetransaction']
     typeOfAccount = request.form['actype']
     if request.method =="POST":
-        result = Customer.transaction(firstna, lastna, value, typeOfAccount)
+        custom = Customer('0000',firstna, lastna, email)
+        result = Customer.transaction(custom, value, typeOfAccount)
         if result == False:
             return render_template("appCustomer.html", error= 'Impossible transaction ')
         else :

@@ -1,3 +1,6 @@
+Emeline JJ - 23858
+Francoise RUCH - 23861
+
 22/04/2021 :
 We have created our class Customer and Employee.
 We tried to create .txt files and to updates codes.
@@ -39,25 +42,27 @@ look at return when pin of employee is false
 problem solved : error in app employee is everywhere we need to differenciate the error message
 research on showing a list of customer 
 methode created for create a list with the customers.txt
+abstract class + inheritance 
+structure of the code with #region
+put all our python in the same .py
+on hmtl we create a framework (aesthetic aspect)
+We check all methods and html 
 
 for 06/05//2021:
-look at the UML diagrams 
-(do we use database for customers or txt is enough)
-app.py good?
-
+look at the UML diagrams
+list html, php ???????
 
 to do list:
-finish the login for customer(we just identify the pin code) maybe firstname,lastname
-
+finish the login for customer (we just identify the pin code) maybe firstname,lastname
+Arrays/Collections
 show list of customers and option their balances
 show transaction history for specified account
-
-remove app.py,employee
-
+Commenting
 when error because customer is already create, in customers.txt it rewrite the all customers
-class user abstract, inheritances
 private or public functions
 test module
+relationship
+tuples
 
 
 short report <1000 words
