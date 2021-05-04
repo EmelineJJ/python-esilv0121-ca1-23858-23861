@@ -1,4 +1,4 @@
-1010	jj-8-10-10	savings
-1010	jj-8-10-10	currents
-0618	fr-13-06-18	savings
-0618	fr-13-06-18	currents
+1010	Jules	Joe	jj-8-10-10	savings	
+1010	Jules	Joe	jj-8-10-10	currents	
+0618	Francoise	Ruch	fr-13-06-18	savings	
+0618	Francoise	Ruch	fr-13-06-18	currents	

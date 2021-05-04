@@ -127,12 +127,12 @@ class Customer:
         # Vérifier si le chemin existe ou non
         if os.path.exists(path) :
             filecustomer = open('Accounts/customers.txt','a')
-            filecustomer.write('\n'+ nameFile + '\t' +nametxtFile+'\t'+'savings')
-            filecustomer.write('\n'+nameFile + '\t' +nametxtFile+'\t'+'currents')
+            filecustomer.write('\n'+ nameFile + '\t'+ firstname +'\t'+lastname+ '\t' +nametxtFile+'\t'+'savings'+ '\t')
+            filecustomer.write('\n'+nameFile + '\t' + firstname +'\t'+lastname+ '\t'  +nametxtFile+'\t'+'currents'+'\t')
         else:
             filecustomer = open('Accounts/customers.txt','a')
-            filecustomer.write(nameFile + '\t' +nametxtFile+'\t'+'savings')
-            filecustomer.write('\n'+nameFile + '\t' +nametxtFile+'\t'+'currents')
+            filecustomer.write(nameFile + '\t'+ firstname +'\t'+lastname+ '\t' +nametxtFile+'\t'+'savings'+'\t')
+            filecustomer.write('\n'+nameFile +'\t' + firstname +'\t'+lastname+ '\t' +nametxtFile+'\t'+'currents'+'\t')
         
         filecustomer.close()
         
