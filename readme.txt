@@ -54,7 +54,7 @@ show transaction history for specified account
 
 remove app.py,employee
 
-
+when error because customer is already create, in customers.txt it rewrite the all customers
 class user abstract, inheritances
 private or public functions
 test module
