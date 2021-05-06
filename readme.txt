@@ -51,21 +51,17 @@ We check all methods and html
 06/05//2021:
 UML diagrams
 problem solved : when error because customer is already create, in customers.txt it rewrite the all customers
-show transaction history for specified account
+show transaction history for specified account in the customer application
+show list of customers
+Problem : show their balances
 
-list html
 
 to do list:
-finish the login for customer (we just identify the pin code) maybe firstname,lastname
-show list of customers and option their balances
+show their balances
 
 Commenting
 private or public functions
 test module
-relationship
-tuples
-polymorphisme
-
 
 link for flask:
 https://pythonspot.com/flask-web-forms/
