@@ -208,36 +208,24 @@ class Employee(Users):
         Users.__init__(self, pin)
         self.pin = 'A1234'
     #region List of customers and their balances
-    def listofcustomers(withbalances):
+    def listofcustomers():
         listofallcustomers=[]
         allcustomers= open("Accounts\customers.txt", "r") 
         lines = allcustomers.read().split( )
         customer = 0
        
-        if withbalances==True:
-            while customer<len(lines):
-                listofallcustomers.append(lines[0+customer])
-                listofallcustomers.append(lines[1+customer])
-                listofallcustomers.append(lines[2+customer])
-                listofallcustomers.append(lines[3+customer])
-                listofallcustomers.append(lines[4+customer])
-                listofallcustomers.append(str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])))
-                customer= customer+5
-                
-        else:
-            while customer<len(lines):
-                listofallcustomers.append(lines[0+customer])
-                listofallcustomers.append(lines[1+customer])
-                listofallcustomers.append(lines[2+customer])
-                listofallcustomers.append(lines[3+customer])
-                listofallcustomers.append(lines[4+customer])
-                customer= customer+5
-              
+        while customer<len(lines):
+            listofallcustomers.append(lines[0+customer])
+            listofallcustomers.append(lines[1+customer])
+            listofallcustomers.append(lines[2+customer])
+            listofallcustomers.append(lines[3+customer])
+            listofallcustomers.append(lines[4+customer])
+            listofallcustomers.append(str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])))
+            customer= customer+5
 
         return listofallcustomers
 
     #endregion
-print(Employee.listofcustomers(True))
 #endregion
 
 #region App for HTML
