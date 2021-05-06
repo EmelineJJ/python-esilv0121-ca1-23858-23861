@@ -41,11 +41,35 @@ Francoise RUCH - 23861 -->
         <p class="error"><strong></strong> {{ error }}
         {% endif %}
         <br><br>
-        List:
-        <br>
-        <input type="checkbox" id="balances" name="balances" value="Balances">
-        <label for="Balances"> Balances</label><br>
     </form>
     </fieldset>    
+    <fieldset>
+        <legend>List:</legend>
+        <br>
+        Type of Account:
+        <br>
+        <input type="radio" id="typeofaccount1" name="actype" value="currents">
+        <label for="currents">Current</label><br>
+        <input type="radio" id="typeofaccount2" name="actype" value="savings">
+        <label for="savings">Saving</label><br>
+        <table style='width: 100%;'>
+            <tr>
+                <th>PIN</th>
+                <th>Firstname</th>
+                <th>Lastname</th>
+                <th>Accounts Code</th>
+                <th>Type of Account</th>
+            </tr>
+            <tr>
+                        {% for x in key %}
+                        <tr>
+                            <td>{{ x }}</td>
+                        </tr>
+                        {% endfor %}
+                    
+            </tr>
+        </table>
+   
+    </fieldset>
 </div>
 {% endblock %}

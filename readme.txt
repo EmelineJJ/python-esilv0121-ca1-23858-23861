@@ -48,24 +48,24 @@ put all our python in the same .py
 on hmtl we create a framework (aesthetic aspect)
 We check all methods and html 
 
-for 06/05//2021:
-look at the UML diagrams
-list html, php ???????
+06/05//2021:
+UML diagrams
+problem solved : when error because customer is already create, in customers.txt it rewrite the all customers
+
+
+list html
 
 to do list:
 finish the login for customer (we just identify the pin code) maybe firstname,lastname
-Arrays/Collections
 show list of customers and option their balances
 show transaction history for specified account
 Commenting
-when error because customer is already create, in customers.txt it rewrite the all customers
 private or public functions
 test module
 relationship
 tuples
+polymorphisme
 
-
-short report <1000 words
 
 link for flask:
 https://pythonspot.com/flask-web-forms/
