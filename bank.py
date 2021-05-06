@@ -212,8 +212,20 @@ class Employee(Users):
         listofallcustomers=[]
         allcustomers= open("Accounts\customers.txt", "r") 
         lines = allcustomers.read().split('\n')
-        bal = FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])
-        lines = lines + bal
+        info = allcustomers.read().split('\t')
+        
+        allBalance =[]
+        customer =0
+        while index < len(info):
+            pin = info[0+customer]
+            accNum = info[3+customer]
+            type = info[4+customer]
+            solde = str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer]))
+            allbalance.append(solde)
+            customer= customer +5 
+
+        lines = str(lines + bal)
+
         return lines
 
     #endregion
