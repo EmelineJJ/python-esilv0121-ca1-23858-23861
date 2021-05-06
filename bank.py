@@ -131,7 +131,7 @@ class Customer(Users):
             filecustomer.write('\n'+ nameFile + '\t'+ self.firstname +'\t'+self.lastname+ '\t' +nametxtFile+'\t'+'savings'+ '\t')
             filecustomer.write('\n'+nameFile + '\t' + self.firstname +'\t'+self.lastname+ '\t'  +nametxtFile+'\t'+'currents'+'\t')
         else:
-            filecustomer = open('Accounts/customers.txt','a')
+            filecustomer = open('Accounts/customers.txt','w')
             filecustomer.write(nameFile + '\t'+ self.firstname +'\t'+self.lastname+ '\t' +nametxtFile+'\t'+'savings'+'\t')
             filecustomer.write('\n'+nameFile +'\t' + self.firstname +'\t'+self.lastname+ '\t' +nametxtFile+'\t'+'currents'+'\t')
         
@@ -165,21 +165,21 @@ class Customer(Users):
 
 
 #region Test
-p ='0000'
-j= Customer(p,'Jules', 'Joe', 'j@gmail.com')
-Customer.newCustomer(j)
+#p ='0000'
+#j= Customer(p,'Jules', 'Joe', 'j@gmail.com')
+#Customer.newCustomer(j)
     
-e= Customer(p,'Emeline', 'Jacques', 'e@gmail.com')
-Customer.newCustomer(e)
+#e= Customer(p,'Emeline', 'Jacques', 'e@gmail.com')
+#Customer.newCustomer(e)
     
-f= Customer(p,'Francoise', 'Ruch', 'f@gmail.com')
-Customer.newCustomer(f)
+#f= Customer(p,'Francoise', 'Ruch', 'f@gmail.com')
+#Customer.newCustomer(f)
     
-Customer.transaction(e, '500', 'savings')
-Customer.transaction(e, '500', 'currents')
+#Customer.transaction(e, '500', 'savings')
+#Customer.transaction(e, '500', 'currents')
 
-Customer.transaction(f, '200', 'savings')
-Customer.transaction(f, '10', 'currents')
+#Customer.transaction(f, '200', 'savings')
+#Customer.transaction(f, '10', 'currents')
 #endregion
 
 #region Inheritance Class: Employee
