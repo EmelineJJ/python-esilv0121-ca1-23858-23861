@@ -211,19 +211,10 @@ class Employee(Users):
     def listofcustomers():
         listofallcustomers=[]
         allcustomers= open("Accounts\customers.txt", "r") 
-        lines = allcustomers.read().split( )
-        customer = 0
-       
-        while customer<len(lines):
-            listofallcustomers.append(lines[0+customer])
-            listofallcustomers.append(lines[1+customer])
-            listofallcustomers.append(lines[2+customer])
-            listofallcustomers.append(lines[3+customer])
-            listofallcustomers.append(lines[4+customer])
-            listofallcustomers.append(str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])))
-            customer= customer+5
-
-        return listofallcustomers
+        lines = allcustomers.read().split('\n')
+        bal = FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])
+        lines = lines + bal
+        return lines
 
     #endregion
 #endregion
@@ -254,7 +245,7 @@ def appEmployee():
         if request.form['password'] != 'A1234':
             return render_template("loginEmployee.html", error='Invalid Password. Please try again.')
         else:
-            return render_template("appEmployee.html", key=Employee.listofcustomers(False))
+            return render_template("appEmployee.html", key=Employee.listofcustomers())
     
 
 

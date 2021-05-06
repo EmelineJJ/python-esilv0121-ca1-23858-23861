@@ -99,14 +99,15 @@ Francoise RUCH - 23861 -->
                 <th>Type of Account</th>
                 <th>Balances</th>
             </tr>
+            
+            {%for lineItems in key%}
             <tr>
-                        {% for x in key %}
-                        <tr>
-                            <td>{{ x }}</td>
-                        </tr>
-                        {% endfor %}
-                    
+                {%for item in lineItems.split('\t')%}
+                <td>{{item}}</td>
+                {%endfor%}
             </tr>
+            {%endfor%}
+            
         </table>
    
     </fieldset>
