@@ -170,7 +170,7 @@ class Customer(Users):
         nameFile = createPin(self.firstname,self.lastname)
         nametxtFile = createAccountNumber(self)
         filetransaction = open('Accounts/'+nameFile+'/'+ nametxtFile + '-'+typeAccount+'.txt','r') 
-        lines = filetransaction.read().split( )
+        lines = filetransaction.read().split('\n')
         
         for line in lines:
             listoftransaction.append(line)
@@ -183,21 +183,23 @@ class Customer(Users):
 
 
 #region Test
+'''
 p ='0000'
-#j= Customer(p,'Jules', 'Joe', 'j@gmail.com')
-#Customer.newCustomer(j)
+j= Customer(p,'Jules', 'Joe', 'j@gmail.com')
+Customer.newCustomer(j)
     
-#e= Customer(p,'Emeline', 'Jacques', 'e@gmail.com')
-#Customer.newCustomer(e)
+e= Customer(p,'Emeline', 'Jacques', 'e@gmail.com')
+Customer.newCustomer(e)
     
-#f= Customer(p,'Francoise', 'Ruch', 'f@gmail.com')
-#Customer.newCustomer(f)
+f= Customer(p,'Francoise', 'Ruch', 'f@gmail.com')
+Customer.newCustomer(f)
     
-#Customer.transaction(e, '500', 'savings')
-#Customer.transaction(e, '500', 'currents')
+Customer.transaction(e, '500', 'savings')
+Customer.transaction(e, '500', 'currents')
 
-#Customer.transaction(f, '200', 'savings')
-#Customer.transaction(f, '10', 'currents')
+Customer.transaction(f, '200', 'savings')
+Customer.transaction(f, '10', 'currents')
+'''
 #endregion
 
 #region Inheritance Class: Employee
@@ -261,7 +263,6 @@ def appEmployee():
 
 @app.route('/customer/app', methods=["POST"])
 def appCustomer():
-
     entries = os.listdir('Accounts/')
     exist=False
     for i in range(len(entries)):
@@ -272,6 +273,17 @@ def appCustomer():
         return render_template("loginCustomer.html", error = 'Try again')
     else : 
         return render_template("appCustomer.html")
+
+@app.route('/customer/app/history', methods=["POST"])
+def hitoryOfAccounts():
+    firstna = request.form['listfirstname']
+    lastna = request.form['listlastname']
+    email = request.form['listemail']
+    typeOfAccounts = request.form['actype2']
+    if request.method =="POST":
+        cust = Customer('0000',firstna,lastna,email)
+        listHistory = Customer.listofTransaction(cust,typeOfAccounts)
+    return render_template("appCustomer.html",key = listHistory)
 
 @app.route('/employee/app/create',methods=["POST"])
 def createCustomer():

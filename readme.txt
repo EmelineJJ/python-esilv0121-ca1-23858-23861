@@ -51,14 +51,14 @@ We check all methods and html
 06/05//2021:
 UML diagrams
 problem solved : when error because customer is already create, in customers.txt it rewrite the all customers
-
+show transaction history for specified account
 
 list html
 
 to do list:
 finish the login for customer (we just identify the pin code) maybe firstname,lastname
 show list of customers and option their balances
-show transaction history for specified account
+
 Commenting
 private or public functions
 test module

@@ -44,22 +44,32 @@ Francoise RUCH - 23861 -->
     </form>
     </fieldset>    
     <fieldset>
+    <form action="/customer/app/history" method = "POST"> 
         <legend>List:</legend>
+        <br>
+        First name:  
+        <input type="text" id="listfirstname" name="listfirstname" placeholder="Joe" >
+        <br>
+        Last name:   
+        <input type="text" id="listlastname" name="listlastname" placeholder="Smith " >
+        <br>
+        Email:   
+        <input type="text" id="listemail" name="listemail" placeholder="joesmith@gmail.com " >
         <br>
         Type of Account:
         <br>
         <input type="radio" id="typeofaccount1" name="actype2" value="currents">
         <label for="currents">Current</label><br>
         <input type="radio" id="typeofaccount2" name="actype2" value="savings">
-        <label for="savings">Saving</label><br><br>
-
+        <label for="savings">Saving</label>
+        <br>
+        <input type="submit" value="Validate">
+        <br>
+        <br>
         <table style='width: 100%;'>
             <tr>
-                <th>PIN</th>
-                <th>Firstname</th>
-                <th>Lastname</th>
-                <th>Accounts Code</th>
-                <th>Type of Account</th>
+                How to read ?
+                Date - Type of transaction - value - total
             </tr>
             <tr>
                         {% for x in key %}
@@ -70,7 +80,7 @@ Francoise RUCH - 23861 -->
                     
             </tr>
         </table>
-   
+    </form>
     </fieldset>
 </div>
 {% endblock %}
