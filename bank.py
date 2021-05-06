@@ -6,7 +6,7 @@ from pathlib import Path
 import os
    
 #region Abstract Class : Users
-from abc import ABC 
+from abc import ABC # For abstract class
 class Users(ABC):
     def __init__(self,pin):
         self.pin = pin
@@ -196,12 +196,12 @@ class Employee(Users):
        
         if withbalances==True:
             while customer<len(lines):
-                line= lines[0+customer]+ lines[1+customer]+ lines[2+customer]+ lines[3+customer]+lines[4+customer]+ str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])) 
+                line= lines[0+customer]+'\t'+ lines[1+customer]+'\t'+ lines[2+customer]+'\t'+ lines[3+customer]+'\t'+lines[4+customer]+'\t'+ str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])) 
                 listofallcustomers.append(line)
                 customer= customer+5
         else:
             while customer<len(lines):
-                line= lines[0+customer]+ lines[1+customer]+ lines[2+customer]+ lines[3+customer]+lines[4+customer]
+                line= lines[0+customer]+'\t'+ lines[1+customer]+'\t'+ lines[2+customer]+'\t'+ lines[3+customer]+'\t'+lines[4+customer]
                 listofallcustomers.append(line)
                 customer= customer+5
 
@@ -238,7 +238,7 @@ def appEmployee():
         if request.form['password'] != 'A1234':
             return render_template("loginEmployee.html", error='Invalid Password. Please try again.')
         else:
-            return render_template("appEmployee.html")
+            return render_template("appEmployee.html", key=Employee.listofcustomers(False))
     
 
 
@@ -248,7 +248,7 @@ def appCustomer():
     entries = os.listdir('Accounts/')
     exist=False
     for i in range(len(entries)):
-        if entries[i] == pin :
+        if entries[i] == request.form['pin'] :
             exist = True
 
     if exist == False:

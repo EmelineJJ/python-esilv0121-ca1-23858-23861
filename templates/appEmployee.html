@@ -89,7 +89,6 @@ Francoise RUCH - 23861 -->
     </fieldset>
     <fieldset>
         <legend>List:</legend>
-        <form action="templates\liste.php" method=  "POST">
         <br>
         <input type="checkbox" id="balances" name="balances" value="Balances">
         <label for="Balances"> Balances</label><br>
@@ -102,14 +101,15 @@ Francoise RUCH - 23861 -->
                 <th>Type of Account</th>
             </tr>
             <tr>
-                <tr>
+                        {% for x in key %}
+                        <tr>
+                            <td>{{ x }}</td>
+                        </tr>
+                        {% endfor %}
                     
-                </tr>
             </tr>
         </table>
-
-        
-    </form>
+   
     </fieldset>
     
 
