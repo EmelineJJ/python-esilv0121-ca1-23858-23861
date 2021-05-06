@@ -223,8 +223,10 @@ class Employee(Users):
             solde = str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer]))
             allbalance.append(solde)
             customer= customer +5 
-
-        lines = str(lines + bal)
+        i=0
+        for line in lines :
+            lines = str(lines + allBalance[i])
+            i=i+1
 
         return lines
 
