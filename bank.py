@@ -98,9 +98,23 @@ class Customer(Users):
         
         balancesOfAccount= int(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount)) + int(value)
         if (balancesOfAccount >=0):
-            filetransaction = open('Accounts/'+nameFile+'/'+ nametxtFile + '-'+typeOfAccount+'.txt','a')
-            filetransaction.write('\n'+ dateOfTransaction +'\t'+ typeTransaction +'\t'+ value +'\t'+ str(balancesOfAccount))
+            filetransaction = open('Accounts/'+nameFile+'/'+ nametxtFile +'-'+typeOfAccount+'.txt','a')
+            filetransaction.write('\n'+ dateOfTransaction +'\t'+ typeTransaction +'\t'+value+'\t'+str(balancesOfAccount))
             filetransaction.close()
+
+            fileallcustomers =  open('Accounts/customers.txt','r+')
+            lines = fileallcustomers.read().split('\n')
+            print(lines)
+            for line in lines:
+                print(line)
+                if str(line) == str(nameFile+'\t'+self.firstname+'\t'+self.lastname+'\t'+nametxtFile+'\t'+typeOfAccount+'\t'+str(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount))):
+                    fileallcustomers.replace(str(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount), str(balancesOfAccount)))
+                    print('test2')
+                else:
+                    line=line+str(12)
+                    print('test3')
+            fileallcustomers.close()
+            
             transfer=True
         return transfer
     
@@ -111,28 +125,29 @@ class Customer(Users):
     def newCustomer(self):   
         dateOfCreation =date.today().strftime('%d-%m-%Y')
         nameFile = createPin(self.firstname,self.lastname)
-        p = Path('Accounts/' + nameFile)
+        p = Path('Accounts/'+nameFile)
         try:
             p.mkdir()
             nametxtFile = createAccountNumber(self)
             filesaving = open('Accounts/'+nameFile+'/'+ nametxtFile + '-savings.txt','w')
-            filesaving.write(dateOfCreation +'\t' +'Creation'+'\t'+'0'+'\t'+'0')
+            filesaving.write(dateOfCreation+'\t'+'Creation'+'\t'+'0'+'\t'+'0')
             filesaving.close()
         
-            filecurrent = open('Accounts/'+nameFile+'/'+ nametxtFile + '-currents.txt','w')
-            filecurrent.write(dateOfCreation + '\t' +'Creation'+'\t'+'0'+'\t'+'0')
+            filecurrent = open('Accounts/'+nameFile+'/'+nametxtFile+'-currents.txt','w')
+            filecurrent.write(dateOfCreation+'\t'+'Creation'+'\t'+'0'+'\t'+'0')
             filecurrent.close()
 
             path = 'Accounts/customers.txt'
         
             if os.path.exists(path) :
                 filecustomer = open('Accounts/customers.txt','a')
-                filecustomer.write('\n'+ nameFile + '\t'+ self.firstname +'\t'+self.lastname+ '\t' +nametxtFile+'\t'+'savings'+ '\t')
-                filecustomer.write('\n'+nameFile + '\t' + self.firstname +'\t'+self.lastname+ '\t'  +nametxtFile+'\t'+'currents'+'\t')
+                filecustomer.write('\n'+nameFile +'\t'+ self.firstname +'\t'+self.lastname+'\t'+nametxtFile+'\t'+'savings'+'\t'+'0')
+                filecustomer.write('\n'+nameFile +'\t'+ self.firstname +'\t'+self.lastname+'\t'+nametxtFile+'\t'+'currents'+'\t'+'0')
+                
             else:
                 filecustomer = open('Accounts/customers.txt','w')
-                filecustomer.write(nameFile + '\t'+ self.firstname +'\t'+self.lastname+ '\t' +nametxtFile+'\t'+'savings'+'\t')
-                filecustomer.write('\n'+nameFile +'\t' + self.firstname +'\t'+self.lastname+ '\t' +nametxtFile+'\t'+'currents'+'\t')
+                filecustomer.write(nameFile +'\t'+ self.firstname +'\t'+self.lastname+'\t'+nametxtFile+'\t'+'savings'+'\t'+'0')
+                filecustomer.write('\n'+nameFile +'\t'+ self.firstname+'\t'+self.lastname+'\t'+nametxtFile+'\t'+'currents'+'\t'+'0')
         
             filecustomer.close()
         except FileExistsError as exc:
@@ -183,7 +198,7 @@ class Customer(Users):
 
 
 #region Test
-'''
+
 p ='0000'
 j= Customer(p,'Jules', 'Joe', 'j@gmail.com')
 Customer.newCustomer(j)
@@ -199,7 +214,7 @@ Customer.transaction(e, '500', 'currents')
 
 Customer.transaction(f, '200', 'savings')
 Customer.transaction(f, '10', 'currents')
-'''
+
 #endregion
 
 #region Inheritance Class: Employee
@@ -212,6 +227,7 @@ class Employee(Users):
         listofallcustomers=[]
         allcustomers= open("Accounts\customers.txt", "r") 
         lines = allcustomers.read().split('\n')
+        allcustomers.close()
         return lines
 
     #endregion
