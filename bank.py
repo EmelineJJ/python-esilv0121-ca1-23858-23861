@@ -73,6 +73,24 @@ def deleteLine(deletePin):
     f.writelines(output)
     f.close()
 
+def replaceLine(nameFile,nametxtFile,typeOfAccount,newBalance,oldBalance,firstname,lastname):
+    newString = nameFile+'\t'+ firstname+'\t'+ lastname+'\t'+ nametxtFile+ '\t'+ typeOfAccount+'\t'+ str(newBalance)
+    fn = 'Accounts/customers.txt'
+    f = open(fn)
+    lines = f.readlines()
+    output = []
+    for line in lines:
+        if (line.find(nameFile)!=-1 )and (line.find(typeOfAccount)!=-1):
+            output.append(newString) 
+            print('test1')   
+        else:
+            output.append(line) 
+            print('test2')   
+    f.close()
+    f = open(fn, 'w')
+    f.writelines(output)
+    f.close()
+
 #region Inheritance Class : Customers
 class Customer(Users):
     def __init__(self,pin,firstname,lastname,email):
@@ -96,24 +114,14 @@ class Customer(Users):
         nameFile = createPin(self.firstname,self.lastname)
         nametxtFile = createAccountNumber(self)
         
-        balancesOfAccount= int(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount)) + int(value)
-        if (balancesOfAccount >=0):
+        oldBalance=int(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount)) 
+        newBalance= int(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount)) + int(value)
+        if (newBalance >=0):
             filetransaction = open('Accounts/'+nameFile+'/'+ nametxtFile +'-'+typeOfAccount+'.txt','a')
-            filetransaction.write('\n'+ dateOfTransaction +'\t'+ typeTransaction +'\t'+value+'\t'+str(balancesOfAccount))
+            filetransaction.write('\n'+ dateOfTransaction +'\t'+ typeTransaction +'\t'+value+'\t'+str(newBalance))
             filetransaction.close()
 
-            fileallcustomers =  open('Accounts/customers.txt','r+')
-            lines = fileallcustomers.read().split('\n')
-            print(lines)
-            for line in lines:
-                print(line)
-                if str(line) == str(nameFile+'\t'+self.firstname+'\t'+self.lastname+'\t'+nametxtFile+'\t'+typeOfAccount+'\t'+str(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount))):
-                    fileallcustomers.replace(str(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount), str(balancesOfAccount)))
-                    print('test2')
-                else:
-                    line=line+str(12)
-                    print('test3')
-            fileallcustomers.close()
+            replaceLine(nameFile,nametxtFile,typeOfAccount,newBalance,oldBalance,self.firstname,self.lastname)
             
             transfer=True
         return transfer
