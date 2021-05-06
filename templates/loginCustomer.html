@@ -9,24 +9,24 @@ Francoise RUCH - 23861 -->
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Login Customer</h1>
+    <h1 style="text-align: center">Login Customer</h1> <!-- Create the title of the page in the center-->
     
-    <form action="/customer/app" method = "POST">  
+    <form action="/customer/app" method = "POST">    <!-- link to the python with action -->
         First name:  
-        <input type="text" id="firstname" name="firstname" placeholder="Joe" required>
+        <input type="text" id="firstname" name="firstname" placeholder="Joe" required> <!-- Textbox to enter the firstname -->
         <br>
         Last name:   
-        <input type="text" id="lastname" name="lastname" placeholder="Smith " required>
+        <input type="text" id="lastname" name="lastname" placeholder="Smith " required> <!-- Textbox to enter the lastname -->
         <br>
         PIN:
-        <input type="text" id="pin" name="pin" placeholder="1019"  required minlength="4" maxlength="4">
+        <input type="text" id="pin" name="pin" placeholder="1019"  required minlength="4" maxlength="4"> <!-- Textbox to enter the pin with a condition of 4 character-->
         <br>
         Account number:
-        <input type="text" id="numaccount" name="numaccount" placeholder="js-8-10-19"  required minlength="11" maxlength="11">
+        <input type="text" id="numaccount" name="numaccount" placeholder="js-8-10-19"  required minlength="11" maxlength="11"> <!-- Textbox to enter the account number -->
         <br>
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit"> <!-- button to Validate -->
     </form>
-    {% if error %}
+    {% if error %} <!-- Loop If, if the password is wrong send the error message -->
     <p class="error"><strong>Error:</strong> {{ error }}
     {% endif %}
 </div>

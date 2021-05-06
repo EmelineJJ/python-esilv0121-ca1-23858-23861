@@ -9,35 +9,35 @@ Francoise RUCH - 23861 -->
 
 {% block body %}
 <div class="content">
-    <h1 style="text-align: center">Menu Customer</h1>
-    <fieldset>
-        <legend>Transactions</legend>
-    <form action="/customer/app/transaction" method = "POST"> 
+    <h1 style="text-align: center">Menu Customer</h1> <!-- Create the title of the page in the center-->
+    <fieldset> <!-- Create the framework -->
+        <legend>Transactions</legend> <!-- Title of the framework -->
+    <form action="/customer/app/transaction" method = "POST"> <!-- link to the python with action -->
 
         <br>
         First name:  
-        <input type="text" id="transactionfirstname" name="transactionfirstname" placeholder="Joe" >
+        <input type="text" id="transactionfirstname" name="transactionfirstname" placeholder="Joe" > <!-- Textbox to enter the firstname -->
         <br>
         Last name:   
-        <input type="text" id="transactionlastname" name="transactionlastname" placeholder="Smith " >
+        <input type="text" id="transactionlastname" name="transactionlastname" placeholder="Smith " > <!-- Textbox to enter the lastname -->
         <br>
         Email:   
-        <input type="text" id="transactionemail" name="transactionemail" placeholder="joesmith@gmail.com " >
+        <input type="text" id="transactionemail" name="transactionemail" placeholder="joesmith@gmail.com " > <!-- Textbox to enter the email -->
         <br>
         <br>
         Type of Account:
         <br>
-        <input type="radio" id="typeofaccount1" name="actype" value="currents">
+        <input type="radio" id="typeofaccount1" name="actype" value="currents"> <!-- Checkbox to choose between the current or saving account -->
         <label for="currents">Current</label><br>
         <input type="radio" id="typeofaccount2" name="actype" value="savings">
         <label for="savings">Saving</label><br>
         Value:
         <br>
-        <input type="text" id="valuetransaction" name="valuetransaction" placeholder="500"  >
+        <input type="text" id="valuetransaction" name="valuetransaction" placeholder="500"  > <!-- Textbox to enter the value of the transaction -->
         <br>
-        <input type="submit" value="Validate">
+        <input type="submit" value="Validate"> <!-- Button to validate the transaction -->
         <br>
-        {% if error %}
+        {% if error %} <!-- Loop If, if the password is wrong send the error message -->
         <p class="error"><strong></strong> {{ error }}
         {% endif %}
         <br><br>
@@ -48,17 +48,17 @@ Francoise RUCH - 23861 -->
         <legend>List:</legend>
         <br>
         First name:  
-        <input type="text" id="listfirstname" name="listfirstname" placeholder="Joe" >
+        <input type="text" id="listfirstname" name="listfirstname" placeholder="Joe" > <!-- Textbox to enter the firstname -->
         <br>
         Last name:   
-        <input type="text" id="listlastname" name="listlastname" placeholder="Smith " >
+        <input type="text" id="listlastname" name="listlastname" placeholder="Smith " > <!-- Textbox to enter the lastname -->
         <br>
         Email:   
-        <input type="text" id="listemail" name="listemail" placeholder="joesmith@gmail.com " >
+        <input type="text" id="listemail" name="listemail" placeholder="joesmith@gmail.com " > <!-- Textbox to enter the email -->
         <br>
         Type of Account:
         <br>
-        <input type="radio" id="typeofaccount1" name="actype2" value="currents">
+        <input type="radio" id="typeofaccount1" name="actype2" value="currents"> <!-- Checkbox to choose between the current or saving account -->
         <label for="currents">Current</label><br>
         <input type="radio" id="typeofaccount2" name="actype2" value="savings">
         <label for="savings">Saving</label>
@@ -66,13 +66,13 @@ Francoise RUCH - 23861 -->
         <input type="submit" value="Validate">
         <br>
         <br>
-        <table style='width: 100%;'>
+        <table style='width: 100%;'> <!-- Table with a width of 100% -->
             <tr>
-                How to read ?
+                How to read ? <!-- Information for the user -->
                 Date - Type of transaction - value - total
             </tr>
             <tr>
-                        {% for x in key %}
+                        {% for x in key %} <!-- For loop, write every line of the key in a new line in the table -->
                         <tr>
                             <td>{{ x }}</td>
                         </tr>

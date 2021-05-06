@@ -10,23 +10,23 @@ Francoise RUCH - 23861 -->
 {% block body %}
 <div class="content">
    
-    <h1 style="text-align: center">Menu Employee</h1>
-    <fieldset>
-        <legend>Create Customers</legend>
-        <form action="/employee/app/create" method = "POST"> 
+    <h1 style="text-align: center">Menu Employee</h1> <!-- Create the title of the page in the center-->
+    <fieldset> <!-- Create the framework -->
+        <legend>Create Customers</legend> <!-- Title of the framework -->
+        <form action="/employee/app/create" method = "POST">  <!-- link to the python with action -->
             <br>
             First name:  
-            <input type="text" id="createfirstname" name="createfirstname" placeholder="Joe" >
+            <input type="text" id="createfirstname" name="createfirstname" placeholder="Joe" > <!-- Textbox to enter the firstname -->
             <br>
             Last name:   
-            <input type="text" id="createlastname" name="createlastname" placeholder="Smith " >
+            <input type="text" id="createlastname" name="createlastname" placeholder="Smith " > <!-- Textbox to enter the lastname -->
             <br>
             email:
-            <input type="text" id="email" name="email" placeholder="joesmith@gmail.com" >
+            <input type="text" id="email" name="email" placeholder="joesmith@gmail.com" > <!-- Textbox to enter the email -->
             <br>
-            <input type="submit" value="Create">
+            <input type="submit" value="Create"> !-- Button to validate the creation of the new customer -->
             <br>
-            {% if error1 %}
+            {% if error1 %}  <!-- Loop If, if the password is wrong send the error message -->
             <p class="error"><strong></strong> {{ error1 }}
             {% endif %}
             <br>
@@ -37,7 +37,7 @@ Francoise RUCH - 23861 -->
     <form action="/employee/app/delete" method = "POST">
 
         First name:  
-        <input type="text" id="deletefirstname" name="deletefirstname" placeholder="Joe" >
+        <input type="text" id="deletefirstname" name="deletefirstname" placeholder="Joe" > 
         <br>
         Last name:   
         <input type="text" id="deletelastname" name="deletelastname" placeholder="Smith " >
@@ -100,9 +100,9 @@ Francoise RUCH - 23861 -->
                 <th>Balances</th>
             </tr>
             
-            {%for lineItems in key%}
+            {%for lineItems in key%} <!-- For loop, read 1 by 1 every line of the key  -->
             <tr>
-                {%for item in lineItems.split('\t')%}
+                {%for item in lineItems.split('\t')%} <!-- For loop, split our lines with '\t' to write in the differents rows -->
                 <td>{{item}}</td>
                 {%endfor%}
             </tr>
