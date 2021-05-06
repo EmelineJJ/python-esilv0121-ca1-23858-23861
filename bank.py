@@ -4,8 +4,7 @@
 from datetime import date
 from pathlib import Path
 import os
-from pandas import numpy as np
-   
+
 #region Abstract Class : Users
 from abc import ABC # For abstract class
 class Users(ABC):
@@ -210,34 +209,30 @@ class Employee(Users):
         self.pin = 'A1234'
     #region List of customers and their balances
     def listofcustomers(withbalances):
-        listofallcustomers=np.array([ ])
+        listofallcustomers=[]
         allcustomers= open("Accounts\customers.txt", "r") 
         lines = allcustomers.read().split( )
         customer = 0
        
         if withbalances==True:
             while customer<len(lines):
-                listtemp=[]
-                #line= lines[0+customer]+'\t'+ lines[1+customer]+'\t'+ lines[2+customer]+'\t'+ lines[3+customer]+'\t'+lines[4+customer]+'\t'+ str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])) 
-                listtemp.append(lines[0+customer])
-                listtemp.append(lines[1+customer])
-                listtemp.append(lines[2+customer])
-                listtemp.append(lines[3+customer])
-                listtemp.append(lines[4+customer])
-                listtemp.append(str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])))
-                listofallcustomers.append(listtemp)
+                listofallcustomers.append(lines[0+customer])
+                listofallcustomers.append(lines[1+customer])
+                listofallcustomers.append(lines[2+customer])
+                listofallcustomers.append(lines[3+customer])
+                listofallcustomers.append(lines[4+customer])
+                listofallcustomers.append(str(FoundBalanceAccount(lines[0+customer], lines[3+customer], lines[4+customer])))
                 customer= customer+5
-                listtemp.clear()
+                
         else:
             while customer<len(lines):
-                listtemp.append(lines[0+customer])
-                listtemp.append(lines[1+customer])
-                listtemp.append(lines[2+customer])
-                listtemp.append(lines[3+customer])
-                listtemp.append(lines[4+customer])
-                listofallcustomers.append(listtemp)
+                listofallcustomers.append(lines[0+customer])
+                listofallcustomers.append(lines[1+customer])
+                listofallcustomers.append(lines[2+customer])
+                listofallcustomers.append(lines[3+customer])
+                listofallcustomers.append(lines[4+customer])
                 customer= customer+5
-                listtemp.clear()
+              
 
         return listofallcustomers
 
