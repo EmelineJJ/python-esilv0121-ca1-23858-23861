@@ -183,7 +183,7 @@ class Customer(Users):
 
 
 #region Test
-#p ='0000'
+p ='0000'
 #j= Customer(p,'Jules', 'Joe', 'j@gmail.com')
 #Customer.newCustomer(j)
     
