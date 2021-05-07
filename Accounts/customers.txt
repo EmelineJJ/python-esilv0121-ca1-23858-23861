@@ -1,6 +1,7 @@
-1010	Jules	Joe	jj-8-10-10	savings	0
-1010	Jules	Joe	jj-8-10-10	currents	6500
+1010	Jules	Joe	jj-8-10-10	savings	5012
+1010	Jules	Joe	jj-8-10-10	currents	7024
 0510	Emeline	Jacques	ej-14-05-10	savings	1000
 0510	Emeline	Jacques	ej-14-05-10	currents	1000
 0618	Francoise	Ruch	fr-13-06-18	savings	400
 0618	francoise	ruch	fr-13-06-18	currents	70
+

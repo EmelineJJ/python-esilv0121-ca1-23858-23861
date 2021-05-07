@@ -9,7 +9,7 @@ import os
 from abc import ABC # For abstract class
 class Users(ABC):
     def __init__(self,pin):
-        self.pin = pin
+        self._pin = pin #protected attributs
 #endregion
 
 
@@ -92,10 +92,10 @@ def replaceLine(nameFile,typeOfAccount,newString):
 class Customer(Users):
     def __init__(self,pin,firstname,lastname,email):
         Users.__init__(self,pin)
-        self.pin = pin
+        self._pin = pin
         self.firstname=firstname
         self.lastname=lastname
-        self.email=email
+        self._email=email
        
     #region Transaction
     def transaction(self,value,typeOfAccount):
@@ -228,7 +228,7 @@ Customer.transaction(f, '10', 'currents')
 class Employee(Users):
     def __init__(self,pin):
         Users.__init__(self, pin)
-        self.pin = 'A1234'
+        self._pin = 'A1234'
     #region List of customers and their balances
     def listofcustomers():
         listofallcustomers=[]
