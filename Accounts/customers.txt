@@ -3,4 +3,4 @@
 0510	Emeline	Jacques	ej-14-05-10	savings	1000
 0510	Emeline	Jacques	ej-14-05-10	currents	1000
 0618	Francoise	Ruch	fr-13-06-18	savings	400
-0618	Francoise	Ruch	fr-13-06-18	currents	20
+0618	francoise	ruch	fr-13-06-18	currents	70

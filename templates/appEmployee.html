@@ -24,7 +24,7 @@ Francoise RUCH - 23861 -->
             email:
             <input type="text" id="email" name="email" placeholder="joesmith@gmail.com" > <!-- Textbox to enter the email -->
             <br>
-            <input type="submit" value="Create"> !-- Button to validate the creation of the new customer -->
+            <input type="submit" value="Create"> <!-- Button to validate the creation of the new customer -->
             <br>
             {% if error1 %}  <!-- Loop If, if the password is wrong send the error message -->
             <p class="error"><strong></strong> {{ error1 }}
@@ -88,7 +88,10 @@ Francoise RUCH - 23861 -->
         </form>
     </fieldset>
     <fieldset>
+    <form action="/employee/app/list" method = "POST"> 
         <legend>List:</legend>
+        <br>
+        <input type="submit" value="Show list">
         <br>
         <table style='width: 100%;'>
             <tr>
@@ -109,9 +112,12 @@ Francoise RUCH - 23861 -->
             {%endfor%}
             
         </table>
-   
+    </form>
     </fieldset>
-    
-
+    <form action="/" method = "POST"> 
+    <br>
+        <input type="submit" value="Return Home">
+    <br>
+    </form>
 </div>
 {% endblock %}

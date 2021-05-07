@@ -48,6 +48,7 @@ put all our python in the same .py
 on hmtl we create a framework (aesthetic aspect)
 We check all methods and html 
 
+
 06/05//2021:
 UML diagrams
 problem solved : when error because customer is already create, in customers.txt it rewrite the all customers
@@ -55,11 +56,16 @@ show transaction history for specified account in the customer application
 show list of customers
 Problem : show their balances
 
+07/05/2021:
+Problem solved : show their balances
+Commenting the html
+button return in every pages
+Button in the Employee app to show the list when there are a modification of the customers.txt 
+
 
 to do list:
-show their balances
 
-Commenting
+Commenting the python
 private or public functions
 test module
 

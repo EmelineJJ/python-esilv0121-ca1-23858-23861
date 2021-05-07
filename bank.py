@@ -268,7 +268,10 @@ def appEmployee():
         else:
             return render_template("appEmployee.html", key=Employee.listofcustomers())
     
-
+@app.route('/employee/app/list', methods=["POST"])
+def listEmployee():
+    return render_template("appEmployee.html", key=Employee.listofcustomers())
+    
 
 @app.route('/customer/app', methods=["POST"])
 def appCustomer():
