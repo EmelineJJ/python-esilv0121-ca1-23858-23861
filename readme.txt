@@ -9,7 +9,6 @@ We start the code to creat the pin for customer (creatpin and dictionnary)
 27/04/2021 :
 We create the folder templates with two html to start our application.
 
-
 link:
 https://developer.mozilla.org/fr/docs/Web/HTML/Element/Input
 
@@ -61,12 +60,11 @@ Problem solved : show their balances
 Commenting the html
 button return in every pages
 Button in the Employee app to show the list when there are a modification of the customers.txt 
-
+private or public functions
 
 to do list:
 
 Commenting the python
-private or public functions
 test module
 
 link for flask:
