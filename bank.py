@@ -203,7 +203,6 @@ class Customer(Users):
 #endregion
 
 
-
 #region Test
 '''
 p ='0000'
