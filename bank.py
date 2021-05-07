@@ -73,19 +73,16 @@ def deleteLine(deletePin):
     f.writelines(output)
     f.close()
 
-def replaceLine(nameFile,nametxtFile,typeOfAccount,newBalance,oldBalance,firstname,lastname):
-    newString = nameFile+'\t'+ firstname+'\t'+ lastname+'\t'+ nametxtFile+ '\t'+ typeOfAccount+'\t'+ str(newBalance)
+def replaceLine(nameFile,typeOfAccount,newString):
     fn = 'Accounts/customers.txt'
     f = open(fn)
     lines = f.readlines()
     output = []
     for line in lines:
         if (line.find(nameFile)!=-1 )and (line.find(typeOfAccount)!=-1):
-            output.append(newString) 
-            print('test1')   
+            output.append(newString)   
         else:
-            output.append(line) 
-            print('test2')   
+            output.append(line)  
     f.close()
     f = open(fn, 'w')
     f.writelines(output)
@@ -121,7 +118,9 @@ class Customer(Users):
             filetransaction.write('\n'+ dateOfTransaction +'\t'+ typeTransaction +'\t'+value+'\t'+str(newBalance))
             filetransaction.close()
 
-            replaceLine(nameFile,nametxtFile,typeOfAccount,newBalance,oldBalance,self.firstname,self.lastname)
+            newString = nameFile+'\t'+ self.firstname+'\t'+ self.lastname+'\t'+ nametxtFile+ '\t'+ typeOfAccount+'\t'+ str(newBalance)+'\n'
+            
+            replaceLine(nameFile,typeOfAccount,newString)
             
             transfer=True
         return transfer
