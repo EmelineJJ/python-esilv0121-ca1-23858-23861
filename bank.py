@@ -205,7 +205,7 @@ class Customer(Users):
 
 
 #region Test
-
+'''
 p ='0000'
 j= Customer(p,'Jules', 'Joe', 'j@gmail.com')
 Customer.newCustomer(j)
@@ -221,7 +221,7 @@ Customer.transaction(e, '500', 'currents')
 
 Customer.transaction(f, '200', 'savings')
 Customer.transaction(f, '10', 'currents')
-
+'''
 #endregion
 
 #region Inheritance Class: Employee
