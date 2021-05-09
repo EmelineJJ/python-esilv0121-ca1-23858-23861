@@ -12,37 +12,39 @@ class Users(ABC):
         self._pin = pin #protected attributs
 #endregion
 
-
+#function to get the position of a letter in the alphabet
 def dictionary(letter):
     chaine = 'abcdefghijklmnopqrstuvwxyz'
     return(1+chaine.index(letter))
 
+#function to create the code pin of a customer thanks to his firstname and lastname
 def createPin(firstname,lastname):
-
     initialPositionFirst=dictionary(firstname[0].lower())
     initialPositionLast= dictionary(lastname[0].lower())
+    
+    # put a 0 before if the number is a single value 
     if(initialPositionFirst<10):
         initialPositionFirst=str(0)+str(initialPositionFirst)
-    
     if(initialPositionLast<10):
         initialPositionLast=str(0)+str(initialPositionLast)
-
 
     pin=str(initialPositionFirst)+str(initialPositionLast)
     return pin
 
+#function to create the account number
 def createAccountNumber(cust):
-
         lenFirst=len(cust.firstname)
         lenLast=len(cust.lastname)       
         
         lenTotal=lenFirst+lenLast
 
+        #put character in lower
         initialPositionFirst=dictionary(cust.firstname[0].lower())
         initialPositionLast= dictionary(cust.lastname[0].lower())
+        
+        # put a 0 before if the number is a single value 
         if(initialPositionFirst<10):
             initialPositionFirst=str(0)+str(initialPositionFirst)
-    
         if(initialPositionLast<10):
             initialPositionLast=str(0)+str(initialPositionLast)
 
@@ -50,8 +52,9 @@ def createAccountNumber(cust):
         
         return accountNum
 
+#function to get the balance of an currents oe savings account of a customer  
 def FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount):
-        
+        #we open the .txt that we want and read all lines to find the last one and read the last value to get the balance
         filetransaction = open('Accounts/'+nameFile+'/'+ nametxtFile + '-'+typeOfAccount+'.txt','r')
         filelines = filetransaction.readlines()
         lastline = filelines[ len( filelines )-1]
@@ -60,26 +63,28 @@ def FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount):
         filetransaction.close()
         return balance
 
+#function to delete a precise line and get the .txt with no empty lines
 def deleteLine(deletePin):
     fn = 'Accounts/customers.txt'
     f = open(fn)
     output = []
     str=deletePin
     for line in f:
-        if not line.startswith(str):
+        if not line.startswith(str): #find the precise line that begin with the pin code of a customer
             output.append(line)
     f.close()
     f = open(fn, 'w')
     f.writelines(output)
     f.close()
 
+#function to change a line it is use for the customers.txt when a customer does a transaction and we need to change his balance
 def replaceLine(nameFile,typeOfAccount,newString):
     fn = 'Accounts/customers.txt'
     f = open(fn)
     lines = f.readlines()
     output = []
     for line in lines:
-        if (line.find(nameFile)!=-1 )and (line.find(typeOfAccount)!=-1):
+        if (line.find(nameFile)!=-1 )and (line.find(typeOfAccount)!=-1): #to identify the line of the customer and the account savings or currents
             output.append(newString)   
         else:
             output.append(line)  
@@ -98,12 +103,14 @@ class Customer(Users):
         self._email=email
        
     #region Transaction
+
+    #function to do a transaction of a value on a specific account
     def transaction(self,value,typeOfAccount):
         transfer=False
-        dateOfTransaction=date.today().strftime('%d-%m-%Y')
+        dateOfTransaction=date.today().strftime('%d-%m-%Y') #date of today
         
         if int(value) <0:
-            typeTransaction='Withdrawal'
+            typeTransaction='Withdrawal' 
 
         else:
             typeTransaction='Lodgement'
@@ -111,15 +118,21 @@ class Customer(Users):
         nameFile = createPin(self.firstname,self.lastname)
         nametxtFile = createAccountNumber(self)
         
+        #get the balance before the transaction
         oldBalance=int(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount)) 
+        #calculate the balance if the transaction is done
         newBalance= int(FoundBalanceAccount(nameFile,nametxtFile,typeOfAccount)) + int(value)
+        
+        #if the balance will not be negative
         if (newBalance >=0):
+            #add the transaction in the .txt of the customer on the specific account to get after an history
             filetransaction = open('Accounts/'+nameFile+'/'+ nametxtFile +'-'+typeOfAccount+'.txt','a')
             filetransaction.write('\n'+ dateOfTransaction +'\t'+ typeTransaction +'\t'+value+'\t'+str(newBalance))
             filetransaction.close()
 
+
             newString = nameFile+'\t'+ self.firstname+'\t'+ self.lastname+'\t'+ nametxtFile+ '\t'+ typeOfAccount+'\t'+ str(newBalance)+'\n'
-            
+            # change the line on customers.txt to change the balance 
             replaceLine(nameFile,typeOfAccount,newString)
             
             transfer=True
@@ -129,28 +142,32 @@ class Customer(Users):
     #endregion  
 
     #region Create new customer
+
+    #function to create a new customer
     def newCustomer(self):   
-        dateOfCreation =date.today().strftime('%d-%m-%Y')
+        dateOfCreation =date.today().strftime('%d-%m-%Y') #date of today
         nameFile = createPin(self.firstname,self.lastname)
-        p = Path('Accounts/'+nameFile)
+        p = Path('Accounts/'+nameFile) #create the folder of the new customer
         try:
             p.mkdir()
             nametxtFile = createAccountNumber(self)
-            filesaving = open('Accounts/'+nameFile+'/'+ nametxtFile + '-savings.txt','w')
-            filesaving.write(dateOfCreation+'\t'+'Creation'+'\t'+'0'+'\t'+'0')
+            filesaving = open('Accounts/'+nameFile+'/'+ nametxtFile + '-savings.txt','w') #create the file .txt for the savings account
+            filesaving.write(dateOfCreation+'\t'+'Creation'+'\t'+'0'+'\t'+'0') #initialize the balance to 0
             filesaving.close()
         
-            filecurrent = open('Accounts/'+nameFile+'/'+nametxtFile+'-currents.txt','w')
-            filecurrent.write(dateOfCreation+'\t'+'Creation'+'\t'+'0'+'\t'+'0')
+            filecurrent = open('Accounts/'+nameFile+'/'+nametxtFile+'-currents.txt','w')#create the file .txt for the currents account
+            filecurrent.write(dateOfCreation+'\t'+'Creation'+'\t'+'0'+'\t'+'0') #initialize the balance to 0
             filecurrent.close()
 
             path = 'Accounts/customers.txt'
-        
+
+            #if customers.txt is already here we had the line of customers informations 
             if os.path.exists(path) :
                 filecustomer = open('Accounts/customers.txt','a')
                 filecustomer.write('\n'+nameFile +'\t'+ self.firstname +'\t'+self.lastname+'\t'+nametxtFile+'\t'+'savings'+'\t'+'0')
                 filecustomer.write('\n'+nameFile +'\t'+ self.firstname +'\t'+self.lastname+'\t'+nametxtFile+'\t'+'currents'+'\t'+'0')
-                
+
+            #if customers.txt doesn't exist we create a the txt and we had the informations of the new customers   
             else:
                 filecustomer = open('Accounts/customers.txt','w')
                 filecustomer.write(nameFile +'\t'+ self.firstname +'\t'+self.lastname+'\t'+nametxtFile+'\t'+'savings'+'\t'+'0')
@@ -164,6 +181,8 @@ class Customer(Users):
     #endregion
  
     #region Delete a customer
+
+    #function to delete a customer and we verify that the customer has current and saving balances to 0
     def deleteCustomer(self):
         delete=False 
         nameFile = createPin(self.firstname,self.lastname)
@@ -175,6 +194,7 @@ class Customer(Users):
         #currents account
         balanceCurrents = int(FoundBalanceAccount(nameFile, nametxtFile, 'currents'))
         
+        #if the two balances is at 0 we can delete the customer so we delete his folder and also the two lines of him in customers.txt
         if (balanceCurrents==0 and balanceSavings==0):  
             os.remove('Accounts/'+nameFile+'/'+ nametxtFile + '-savings.txt')
             os.remove('Accounts/'+nameFile+'/'+ nametxtFile + '-currents.txt')
@@ -187,12 +207,14 @@ class Customer(Users):
     #endregion
 
     #region transaction
+
+    #function to return a list of transaction of a specific account in order to do a history
     def listofTransaction(self,typeAccount):
         listoftransaction=[]
         nameFile = createPin(self.firstname,self.lastname)
         nametxtFile = createAccountNumber(self)
         filetransaction = open('Accounts/'+nameFile+'/'+ nametxtFile + '-'+typeAccount+'.txt','r') 
-        lines = filetransaction.read().split('\n')
+        lines = filetransaction.read().split('\n') # we read all lines
         
         for line in lines:
             listoftransaction.append(line)
@@ -229,6 +251,7 @@ class Employee(Users):
         Users.__init__(self, pin)
         self._pin = 'A1234'
     #region List of customers and their balances
+    #function to return all the customers with their account numbers, code pin and their balances
     def listofcustomers():
         listofallcustomers=[]
         allcustomers= open("Accounts\customers.txt", "r") 
