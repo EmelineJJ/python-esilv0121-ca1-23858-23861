@@ -5,3 +5,4 @@
 07-05-2021	Lodgement	10	40
 07-05-2021	Lodgement	10	50
 07-05-2021	Lodgement	10	60
+10-05-2021	Lodgement	10	70
