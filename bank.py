@@ -268,7 +268,7 @@ import os
 
 app = Flask(__name__)
 
-
+#All app.route are a link to the html, we used to change the page of our application and sometimes to test entries of the html
 @app.route("/", methods=["GET","POST"])
 def home():
     return render_template("index.html")
@@ -276,7 +276,7 @@ def home():
 
 @app.route('/employee')
 def employee():
-     return render_template("loginEmployee.html", id = 'A1234')
+     return render_template("loginEmployee.html", id = 'A1234') # we change the page with an parameter 
    
 @app.route('/customer')
 def customer():
@@ -285,10 +285,12 @@ def customer():
 @app.route('/employee/app', methods=["POST"])
 def appEmployee():
     if request.method == 'POST' :
-        if request.form['password'] != 'A1234':
+        if request.form['password'] != 'A1234': # here we test the password, if it's not A1234, we come back to the same page with an error message
             return render_template("loginEmployee.html", error='Invalid Password. Please try again.')
         else:
-            return render_template("appEmployee.html", key=Employee.listofcustomers())
+            return render_template("appEmployee.html", key=Employee.listofcustomers()) 
+            # here, the password is correct and we go to the application for employee, in parameters we have a list of customer 
+            #created in the class Employee in the method listofcustomers
     
 @app.route('/employee/app/list', methods=["POST"])
 def listEmployee():
@@ -297,9 +299,9 @@ def listEmployee():
 
 @app.route('/customer/app', methods=["POST"])
 def appCustomer():
-    entries = os.listdir('Accounts/')
+    entries = os.listdir('Accounts/') # list of the folder in Accounts
     exist=False
-    for i in range(len(entries)):
+    for i in range(len(entries)): # we test if the pin enter in the html exist in the name of folders
         if entries[i] == request.form['pin'] :
             exist = True
 
@@ -310,12 +312,12 @@ def appCustomer():
 
 @app.route('/customer/app/history', methods=["POST"])
 def hitoryOfAccounts():
-    firstna = request.form['listfirstname']
+    firstna = request.form['listfirstname'] # we recover the string enter in the html with request.form
     lastna = request.form['listlastname']
     email = request.form['listemail']
     typeOfAccounts = request.form['actype2']
     if request.method =="POST":
-        cust = Customer('0000',firstna,lastna,email)
+        cust = Customer('0000',firstna,lastna,email) # we create a customer to enter cust in parameter of our method listOfTransaction
         listHistory = Customer.listofTransaction(cust,typeOfAccounts)
     return render_template("appCustomer.html",key = listHistory)
 
@@ -336,7 +338,7 @@ def deleteCustomer():
     email =  request.form['deleteemail']
     if request.method =="POST":
         toDelete = Customer('0000',firstna,lastna, email)
-        result = Customer.deleteCustomer(toDelete)
+        result = Customer.deleteCustomer(toDelete) # we call the delete's method to delete a customer  if he has 0 balances
         if result == False:
             return render_template("appEmployee.html", error2= 'The customer need to have 0 balances')
         else :
@@ -368,7 +370,7 @@ def transactionCustomer():
     typeOfAccount = request.form['actype']
     if request.method =="POST":
         custom = Customer('0000',firstna, lastna, email)
-        result = Customer.transaction(custom, value, typeOfAccount)
+        result = Customer.transaction(custom, value, typeOfAccount) # we call the transaction's method to create a new transaction
         if result == False:
             return render_template("appCustomer.html", error= 'Impossible transaction ')
         else :

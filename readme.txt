@@ -63,8 +63,7 @@ Button in the Employee app to show the list when there are a modification of the
 private or public functions
 test module
 
-to do list:
-
+10/05/2021:
 Commenting the python
 
 
